@@ -1,0 +1,63 @@
+/* Pinx design tokens and CSS variable fallbacks */
+:root {
+  /* Base theme tokens */
+  --bs-primary: #ff006c;
+  --bs-primary-rgb: 255, 0, 108;
+  --bs-secondary: #ffedf5;
+
+  /* Background colors */
+  --Background-Pink-Default: #ff006c;
+  --Background-Pink-Dark: #de005e;
+  --Background-Pink-Subtle: #ffedf5;
+  --Background-Neutral-Primary: #ffffff;
+  --Background-Neutral-Secondary: #eeeced;
+  --Background-Neutral-Primary-50: rgba(255, 255, 255, 0.5);
+
+  /* Text colors */
+  --Text-Neutral-Primary: #1c1a1c;
+  --Text-Neutral-Secondary: #504c4f;
+  --Text-Neutral-Tertiary: #a09b9f;
+  --Text-Neutral-Inverse-Primary: #ffffff;
+  --Text-Pink-Default: #ff006c;
+
+  /* Border colors */
+  --Border-Neutral-Secondary: #908b8f;
+  --Border-Neutral: #b0acaf;
+  --Border-Brand-Primary: #de005e;
+  --Border-Brand-Inverse: #ffedf5;
+}
+
+/* Typography */
+// Font Families
+$font-primary: 'Onest', sans-serif !default;
+$font-secondary: 'Roboto', sans-serif !default;
+
+// Font Weights from Figma
+$font-weight-regular: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-extrabold: 800 !default;
+$font-weight-black: 900 !default;
+
+
+
+// Font Sizes from Figma
+$font-size-base: 16px !default;      // Body/Regular
+$font-size-sm: 14px !default;        // Button/Small
+$font-size-xs: 12px !default;        // Button/Extra Small (mobile)
+$font-size-lg: 20px !default;        // Body/Body Large
+$font-size-xl: 24px !default;        // Headline/Regular
+$font-size-2xl: 28px !default;       // H3/Bold
+$font-size-3xl: 32px !default;       // Headers/Heading
+$font-size-4xl: 48px !default;       // H2/Bold
+$font-size-5xl: 52px !default;       // H1/Bold
+
+// Line Heights from Figma
+$line-height-tight: 1.2 !default;
+$line-height-snug: 1.3 !default;     // Headers/Heading
+$line-height-normal: 1.5 !default;    // Body text
+$line-height-heading-h1: 80px !default;
+$line-height-heading-h2: 60px !default;
+$line-height-heading-h3: 40px !default;
+$line-height-body: 36px !default;

@@ -1,0 +1,147 @@
+@use "./variables" as vars;
+
+/* ========================================= */
+/* BUTTON STYLES - consolidated and fixed    */
+/* ========================================= */
+
+.btn {
+  font-family: vars.$font-primary;
+  font-weight: vars.$font-weight-semibold;
+  border-radius: 43px;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 12px 20px;
+}
+
+.btn:focus { outline: none; box-shadow: none; }
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--Background-Pink-Dark);
+  color: #ffffff;
+}
+
+.btn-primary:hover { background-color: var(--Background-Pink-Dark); border-color: var(--Background-Pink-Dark); }
+
+.btn-secondary {
+  background-color: var(--Background-Neutral-Primary, #ffffff);
+  border-color: var(--bs-secondary);
+  color: var(--bs-primary);
+}
+
+.btn-secondary:hover { background-color: var(--bs-primary); border-color: var(--bs-primary); color: #fff; }
+
+/* Nav and CTA variants */
+.btn-nav { padding: 8px 16px; border-radius: 43px; }
+.btn-cta { padding: 12px 20px; border-radius: 43px; }
+
+/* Tamaños */
+.btn-xs { padding: 6px 8px; font-size: 12px; min-height: 26px; min-width: 72px; }
+.btn-sm { padding: 8px 16px; font-size: vars.$font-size-sm; min-height: 35px; min-width: 108px; }
+.btn-md { padding: 10px 18px; font-size: vars.$font-size-base; min-height: 42px; min-width: 121px; }
+.btn-lg { padding: 12px 20px; font-size: vars.$font-size-lg; min-height: 50px; min-width: 140px; }
+.btn-xl { padding: 24px 32px; font-size: vars.$font-size-xl; min-height: 77px; min-width: 185px; }
+
+/* Estados para btn-primary */
+.btn-primary {
+  background-color: var(--Background-Pink-Default);
+  border: 2px solid var(--Border-Brand-Primary);
+  color: var(--Text-Neutral-Inverse-Primary);
+  font-family: vars.$font-primary;
+  font-weight: vars.$font-weight-semibold;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.btn-primary:hover {
+  background-color: var(--Background-Pink-Light);
+  color: var(--Text-Neutral-Inverse-Primary);
+}
+.btn-primary:focus {
+  background-color: var(--Background-Pink-Subtle);
+  color: var(--Text-Pink-Dark);
+  border-color: var(--Border-Brand-Primary);
+  outline: none;
+}
+.btn-primary.selected {
+  background-color: var(--Background-Pink-Subtle);
+  color: var(--Text-Pink-Default);
+  border-color: var(--Border-Brand-Primary);
+}
+.btn-primary:disabled,
+.btn-primary.disabled {
+  background-color: #cfcdcf;
+  color: #908b8f;
+  border-color: #cfcdcf;
+  cursor: not-allowed;
+}
+
+/* Estados para btn-secondary */
+.btn-secondary {
+  background-color: var(--Background-Neutral-Primary);
+  border: 2px solid var(--Border-Brand-Inverse);
+  color: var(--Text-Pink-Default);
+  font-family: vars.$font-primary;
+  font-weight: vars.$font-weight-semibold;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.btn-secondary:hover {
+  background-color: var(--Background-Pink-Subtle);
+  color: var(--Text-Pink-Default, #FF006C);
+  border: 2px solid var(--Border-Brand-Primary);
+}
+.btn-secondary:focus {
+  background-color: var(--Background-Pink-Subtle);
+  color: var(--Text-Pink-Dark);
+  border-color: var(--Border-Brand-Primary);
+  outline: none;
+}
+.btn-secondary.selected {
+  background-color: var(--Background-Pink-Subtle);
+  color: var(--Text-Pink-Default);
+  border-color: var(--Border-Brand-Inverse);
+}
+.btn-secondary:disabled,
+.btn-secondary.disabled {
+  background-color: #cfcdcf;
+  color: #908b8f;
+  border-color: #cfcdcf;
+  cursor: not-allowed;
+}
+
+/* Outline variants */
+.btn-outline-primary { background-color: transparent; border-color: var(--Background-Pink-Default); color: var(--Background-Pink-Default); }
+.btn-outline-primary:hover { background-color: var(--Background-Pink-Default); color: var(--Text-Neutral-Inverse-Primary); }
+
+.btn-outline-secondary { background-color: transparent; border-color: var(--Border-Neutral-Secondary); color: var(--Text-Secondary); }
+.btn-outline-secondary:hover { background-color: var(--Text-Secondary); color: var(--Text-Neutral-Inverse-Primary); }
+
+/* Service tab buttons */
+.service-tab-btn { transition: all 0.3s ease; position: relative; }
+.service-tab-btn.active { background-color: var(--Background-Pink-Subtle) !important; border-color: var(--bs-secondary) !important; color: var(--bs-primary) !important; }
+.service-tab-btn:hover:not(.active) { background-color: var(--bs-primary) !important; border-color: var(--bs-primary) !important; color: #fff !important; }
+
+/* Icon and group helpers */
+.btn-icon { display: inline-flex; align-items: center; gap: 8px; }
+.btn-group { display: flex; gap: 12px; }
+.btn-group.btn-group-vertical { flex-direction: column; }
+.btn-group.btn-group-horizontal { flex-direction: row; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .btn { padding: 10px 18px; font-size: vars.$font-size-sm; }
+  .btn-xl { padding: 20px 28px; font-size: vars.$font-size-lg; }
+}
+
+@media (max-width: 576px) {
+  .btn { padding: 8px 16px; font-size: vars.$font-size-xs; }
+  .btn-xl { padding: 16px 24px; font-size: vars.$font-size-base; }
+}
+
+/* icon size helpers used in HTML */
+.icon-sm { font-size: 14px; }
+.icon-md { font-size: 16px; }
+.icon-lg { font-size: 24px; }
+

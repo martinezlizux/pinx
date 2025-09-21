@@ -1,0 +1,75 @@
+@use "./variables" as vars;
+
+.text-primary { color: var(--Text-Primary) !important; }
+.text-secondary { color: var(--Text-Secondary) !important; }
+.text-muted { color: var(--Text-Muted) !important; }
+
+.pinx-text-primary { color: var(--Text-Primary); }
+.pinx-text-secondary { color: var(--Text-Secondary); }
+.pinx-text-tertiary { color: var(--Text-Muted); }
+.pinx-text-pink { color: var(--bs-primary); }
+.pinx-text-white { color: white; }
+
+.bg-primary { background-color: var(--bs-primary) !important; }
+.bg-secondary { background-color: var(--bs-secondary) !important; }
+.pinx-bg-primary { background-color: white; }
+.pinx-bg-secondary { background-color: #eeeced; }
+.pinx-bg-pink { background-color: var(--bs-primary); }
+.pinx-bg-pink-subtle { background-color: var(--bs-secondary); }
+
+.pinx-border-primary { border-color: #de005e; }
+.pinx-border-secondary { border-color: var(--bs-secondary); }
+.pinx-border-neutral { border-color: var(--Border-Neutral-Secondary); }
+.pinx-border-form { border-color: var(--Border-Neutral); }
+
+.gap-6 { gap: 1.5rem !important; }
+
+/* Spacing utilities (partial set migrated) */
+.mb-0 { margin-bottom: 0 !important; }
+.mb-1 { margin-bottom: 8px !important; }
+.mb-2 { margin-bottom: 16px !important; }
+.mb-3 { margin-bottom: 24px !important; }
+.mb-4 { margin-bottom: 32px !important; }
+.mb-5 { margin-bottom: 40px !important; }
+.mb-6 { margin-bottom: 48px !important; }
+.mb-7 { margin-bottom: 56px !important; }
+.mb-8 { margin-bottom: 64px !important; }
+
+.mt-0 { margin-top: 0 !important; }
+.mt-1 { margin-top: 8px !important; }
+.mt-2 { margin-top: 16px !important; }
+.mt-3 { margin-top: 24px !important; }
+.mt-4 { margin-top: 32px !important; }
+.mt-5 { margin-top: 40px !important; }
+.mt-6 { margin-top: 48px !important; }
+
+/* Extended margin helpers used in HTML */
+.mb-9 { margin-bottom: 72px !important; }
+.mb-10 { margin-bottom: 80px !important; }
+
+/* Max width helpers used in layout */
+.max-w-1182 { max-width: 1182px !important; }
+.max-w-1240 { max-width: 1240px !important; }
+.max-w-838 { max-width: 838px !important; }
+.max-w-832 { max-width: 832px !important; }
+
+/* Fixed widths / heights used in HTML */
+.w-590 { width: 590px !important; }
+.h-500 { height: 500px !important; }
+.h-163 { height: 163px !important; }
+.h-275 { height: 275px !important; }
+.h-450 { height: 450px !important; }
+
+.w-600 { width: 600px !important; }
+
+.bg-white { background-color: #ffffff !important; }
+
+/* Small rounded helper used in portfolio/contact boxes */
+.rounded-sm { border-radius: 10px !important; }
+
+/* Centering helpers */
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+/* Flex grow helper used in contact layout */
+.flex-grow-1 { flex: 1 !important; }
+

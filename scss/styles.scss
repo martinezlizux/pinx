@@ -1,0 +1,105 @@
+// =========================================
+// PINX LANDING PAGE - MAIN SCSS FILE
+// =========================================
+
+// Use SASS modules and custom partials
+@use "custom/variables" as *;
+@use "custom/Pinx-variables" as *;
+
+@use "custom/typography" as *;
+@use "custom/buttons" as *;
+@use "custom/forms" as *;
+@use "custom/components" as *;
+@use "custom/utilities" as *;
+@use "custom/layout" as *;
+@use "custom/secciones" as *;
+
+// =========================================
+// GLOBAL STYLES
+// =========================================
+
+// Reset and base styles
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Onest', sans-serif;
+  color: var(--Text-Neutral-Primary);
+  margin: 0;
+  padding: 0;
+  background-color: var(--Background-Neutral-Primary);
+  line-height: 1.6;
+}
+
+// =========================================
+// BOOTSTRAP OVERRIDES
+// =========================================
+
+// Override Bootstrap primary and secondary colors
+:root {
+  --bs-primary: var(--Background-Pink-Default);
+  --bs-secondary: var(--Text-Neutral-Tertiary);
+  --bs-success: var(--Background-Green-Default);
+  --bs-info: var(--Background-Purple-Default);
+  --bs-warning: var(--Background-Orange-Default);
+  --bs-danger: var(--Background-Pink-Dark);
+  --bs-light: var(--Background-Neutral-Secondary);
+  --bs-dark: var(--Text-Neutral-Primary);
+}
+
+// =========================================
+// UTILITY CLASSES
+// =========================================
+
+// Service Content Transitions
+.service-content {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-content.hidden {
+  display: none !important;
+}
+
+// Form Styles
+.form-control:focus {
+  border-color: var(--Border-Brand-Primary) !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 108, 0.25) !important;
+}
+
+// =========================================
+// RESPONSIVE UTILITIES
+// =========================================
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .section-padding {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 12px;
+  }
+  
+  .section-padding {
+    padding: 40px 0;
+  }
+}

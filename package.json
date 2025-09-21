@@ -1,0 +1,22 @@
+{
+  "name": "pinx",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Proyecto Pinx - compilación automática de SCSS a assets/css/styles.css",
+  "main": "index.js",
+  "scripts": {
+    "build:sass": "sass scss/styles.scss assets/css/styles.css --no-source-map",
+    "watch:sass": "sass --watch scss/styles.scss:assets/css/styles.css --no-source-map",
+    "build": "npm run build:sass",
+    "start": "npm run watch:sass"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  }
+}
