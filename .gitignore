@@ -1,2 +1,12 @@
-# Ignore VS Code settings containing secrets
+.DS_Store
+node_modules/
+server/node_modules/
+.env
+.env.*
+.sass-cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+coverage/
+server/dist/# Ignore VS Code settings containing secrets
 /.vscode/settings.json
