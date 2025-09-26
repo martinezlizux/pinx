@@ -3,11 +3,11 @@
 .form-control {
   border: 1px solid var(--Border-Neutral);
   border-radius: 8px;
-  padding: 17px 13px;
+  padding: var(--px-control-padding-y) var(--px-control-padding-x);
   box-sizing: border-box;
 }
 
-.form-control.textarea { padding: 27px 13px 11px 13px; }
+.form-control.textarea { padding: var(--px-textarea-padding-top) var(--px-control-padding-x) var(--px-textarea-padding-bottom) var(--px-control-padding-x); }
 
 .form-control:focus {
   border-color: var(--bs-primary);
@@ -17,7 +17,7 @@
 
 .contact-card {
   border-radius: 20px;
-  padding: 24px;
+  padding: var(--px-form-padding);
   position: relative;
   border: 1px solid var(--Border-Neutral);
   box-shadow: 0 4px 4px rgba(0,0,0,0.06);
@@ -26,5 +26,5 @@
   max-width: 600px;
 }
 
-.contact-card .mb-3 { margin-bottom: 16px; }
+.contact-card .mb-3 { margin-bottom: var(--Space-md); }
 

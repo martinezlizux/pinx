@@ -1,16 +1,15 @@
 @use "./variables" as vars;
 
 /* ========================================= */
-/* BUTTON STYLES - consolidated and fixed    */
+/* BUTTON STYLES - Pinx overrides + aliases */
 /* ========================================= */
 
+// Base button enhancements (Bootstrap already defines .btn)
 .btn {
   font-family: vars.$font-primary;
   font-weight: vars.$font-weight-semibold;
   border-radius: 43px;
   transition: all 0.3s ease;
-  position: relative;
-  border: 1px solid transparent;
   display: inline-flex;
   align-items: center;
   gap: .5rem;
@@ -19,25 +18,23 @@
 
 .btn:focus { outline: none; box-shadow: none; }
 
-.btn-primary {
-  background-color: var(--bs-primary);
-  border-color: var(--Background-Pink-Dark);
-  color: #ffffff;
-}
+/* variants defined below with design tokens */
 
-.btn-primary:hover { background-color: var(--Background-Pink-Dark); border-color: var(--Background-Pink-Dark); }
-
-.btn-secondary {
-  background-color: var(--Background-Neutral-Primary, #ffffff);
-  border-color: var(--bs-secondary);
-  color: var(--bs-primary);
-}
-
-.btn-secondary:hover { background-color: var(--bs-primary); border-color: var(--bs-primary); color: #fff; }
-
-/* Nav and CTA variants */
+/* Roles */
 .btn-nav { padding: 8px 16px; border-radius: 43px; }
 .btn-cta { padding: 12px 20px; border-radius: 43px; }
+
+/* PX alias classes map to Bootstrap buttons to keep one stylesheet */
+.px-btn { @extend .btn; }
+.px-btn--primary { @extend .btn-primary; }
+.px-btn--secondary { @extend .btn-secondary; }
+.px-btn--xs { @extend .btn-xs; }
+.px-btn--sm { @extend .btn-sm; }
+.px-btn--md { @extend .btn-md; }
+.px-btn--lg { @extend .btn-lg; }
+.px-btn--xl { @extend .btn-xl; }
+.px-btn--cta { @extend .btn-cta; }
+.px-btn--nav { @extend .btn-nav; }
 
 /* Tamaños */
 .btn-xs { padding: 6px 8px; font-size: 12px; min-height: 26px; min-width: 72px; }
@@ -124,8 +121,8 @@
 .service-tab-btn:hover:not(.active) { background-color: var(--bs-primary) !important; border-color: var(--bs-primary) !important; color: #fff !important; }
 
 /* Icon and group helpers */
-.btn-icon { display: inline-flex; align-items: center; gap: 8px; }
-.btn-group { display: flex; gap: 12px; }
+.btn-icon { display: inline-flex; align-items: center; gap: var(--Space-xs); }
+.btn-group { display: flex; gap: var(--Space-sm); }
 .btn-group.btn-group-vertical { flex-direction: column; }
 .btn-group.btn-group-horizontal { flex-direction: row; }
 

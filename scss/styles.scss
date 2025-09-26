@@ -3,16 +3,59 @@
 // =========================================
 
 // Use SASS modules and custom partials
-@use "custom/variables" as *;
-@use "custom/Pinx-variables" as *;
+// 1) Load our design tokens first
+@use "custom/variables" as vars;
 
+// 2) Bootstrap customization per docs
+// Use `@use "bootstrap" with (...)` to configure variables
+@use "bootstrap/scss/bootstrap" with (
+  $primary: vars.$pinx-color-primary,
+  $secondary: vars.$pinx-color-secondary,
+  $success: vars.$pinx-color-success,
+  $info: vars.$pinx-color-info,
+  $warning: vars.$pinx-color-warning,
+  $danger: vars.$pinx-color-danger,
+  $light: vars.$pinx-color-light,
+  $dark: vars.$pinx-color-dark,
+  $font-family-sans-serif: (vars.$font-primary, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"),
+  $body-bg: vars.$pinx-color-light,
+  $body-color: vars.$pinx-color-dark,
+  $link-color: vars.$pinx-color-link,
+  $link-hover-color: vars.$pinx-color-link-hover,
+  $border-color: vars.$pinx-color-border-default,
+  $border-radius: vars.$pinx-radius-md,
+  $border-radius-pill: vars.$pinx-radius-pill,
+  $spacer: vars.$pinx-spacer,
+  $spacers: vars.$pinx-spacers,
+  $grid-breakpoints: vars.$pinx-grid-breakpoints,
+  // Typography
+  $font-size-base: vars.$pinx-font-size-base,
+  $line-height-base: vars.$pinx-line-height-base,
+  $headings-font-weight: vars.$pinx-headings-font-weight,
+  $headings-font-family: vars.$pinx-headings-font-family,
+  $headings-line-height: vars.$pinx-headings-line-height,
+  $h1-font-size: vars.$pinx-h1-font-size,
+  $h2-font-size: vars.$pinx-h2-font-size,
+  $h3-font-size: vars.$pinx-h3-font-size,
+  $h4-font-size: vars.$pinx-h4-font-size,
+  $h5-font-size: vars.$pinx-h5-font-size,
+  $h6-font-size: vars.$pinx-h6-font-size,
+  $lead-font-size: vars.$pinx-lead-font-size,
+  $small-font-size: vars.$pinx-small-font-size,
+  $display-font-sizes: vars.$pinx-display-font-sizes,
+  $display-font-weight: vars.$pinx-display-font-weight,
+  $display-line-height: vars.$pinx-display-line-height
+);
+
+// 4) Now load the rest of our custom partials that override components
 @use "custom/typography" as *;
 @use "custom/buttons" as *;
 @use "custom/forms" as *;
-@use "custom/components" as *;
-@use "custom/utilities" as *;
-@use "custom/layout" as *;
+
+// Removed deprecated partials (components/utilities/layout) to avoid duplication with Bootstrap
 @use "custom/secciones" as *;
+@use "custom/figma-landing" as *;
+@use "custom/px-cards" as *;
 
 // =========================================
 // GLOBAL STYLES
@@ -36,21 +79,7 @@ body {
   line-height: 1.6;
 }
 
-// =========================================
-// BOOTSTRAP OVERRIDES
-// =========================================
-
-// Override Bootstrap primary and secondary colors
-:root {
-  --bs-primary: var(--Background-Pink-Default);
-  --bs-secondary: var(--Text-Neutral-Tertiary);
-  --bs-success: var(--Background-Green-Default);
-  --bs-info: var(--Background-Purple-Default);
-  --bs-warning: var(--Background-Orange-Default);
-  --bs-danger: var(--Background-Pink-Dark);
-  --bs-light: var(--Background-Neutral-Secondary);
-  --bs-dark: var(--Text-Neutral-Primary);
-}
+// Bootstrap is loaded above with our Sass variable overrides.
 
 // =========================================
 // UTILITY CLASSES
@@ -77,28 +106,13 @@ body {
 // RESPONSIVE UTILITIES
 // =========================================
 
-@media (max-width: 1200px) {
-  .container {
-    max-width: 100%;
-    padding: 0 20px;
-  }
-}
-
 @media (max-width: 768px) {
-  .container {
-    padding: 0 16px;
-  }
-  
   .section-padding {
     padding: 60px 0;
   }
 }
 
 @media (max-width: 576px) {
-  .container {
-    padding: 0 12px;
-  }
-  
   .section-padding {
     padding: 40px 0;
   }

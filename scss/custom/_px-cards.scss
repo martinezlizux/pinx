@@ -1,0 +1,24 @@
+// PX Card components
+
+.px-card {
+  background: var(--Background-Neutral-Primary);
+  border-radius: 20px;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+  padding: var(--px-form-padding); /* 24px per Figma */
+  color: var(--Text-Neutral-Primary);
+}
+
+.px-card__title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 40px;
+  margin: 0 0 var(--Space-sm); /* 12px */
+}
+
+.px-card__desc {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--Text-Neutral-Secondary);
+  margin: 0; /* gap to image is handled by card content layout */
+}

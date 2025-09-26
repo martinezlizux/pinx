@@ -1,0 +1,79 @@
+// Figma landing styles mapped to Pinx design tokens (CSS variables)
+
+.px-section { padding: var(--px-section-padding-y) 0; } // section vertical padding from token
+.px-section--hero { padding-top: var(--px-hero-pt); padding-bottom: var(--px-hero-pb); text-align: center; }
+#hero.px-section { padding: var(--px-hero-padding-y) 0; }
+
+.px-hero__title {
+  font-weight: 900; font-size: 52px; line-height: 80px; margin: 0;
+  background: linear-gradient(90deg, #ed437f, #9842b4 45.192%, #534ae5);
+  background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.px-h2 { font-weight: 700; font-size: 48px; line-height: 60px; margin: 0 0 var(--px-gap-xl); color: var(--Text-Neutral-Primary); }
+.px-eyebrow { color: var(--Text-Neutral-Tertiary); font-weight: 600; font-size: 24px; line-height: 60px; letter-spacing: 10px; text-transform: uppercase; margin: 0 0 var(--px-gap-xl); }
+.px-lead { font-weight: 500; font-size: 20px; line-height: 36px; color: var(--Text-Neutral-Primary); margin: 0 0 var(--px-gap-xl); }
+.px-body { font-size: 20px; line-height: 1.5;  }
+
+.px-row { display: grid; gap: var(--px-gap-lg); }
+.px-row--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.px-grid { display: grid; gap: var(--px-gap-md); }
+.px-grid--4x2 { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 163px; }
+.px-grid--3 { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 275px; }
+
+
+.px-img.ph, .px-grid .ph { background: var(--Background-Neutral-Secondary); border-radius: 10px; height: 200px; }
+.px-icon { width: 66px; height: 66px; border-radius: 7px; box-shadow: 0 4px 4px rgba(0,0,0,0.25); border: 3px solid var(--Border-Brand-Primary); }
+
+
+.px-form { display: grid; gap: var(--px-form-gap); background: var(--Background-Neutral-Primary); border-radius: 20px; box-shadow: 0 4px 4px rgba(0,0,0,0.25); padding: var(--px-form-padding); }
+.px-input, .px-textarea { display: grid; gap: var(--px-input-gap); }
+.px-input__label { font-size: 16px; color: var(--Text-Neutral-Secondary); opacity: 0.85; }
+.px-input input, .px-textarea textarea { display: block; width: 100%; padding: var(--px-input-padding); border-radius: 8px; border: 1px solid var(--Border-Neutral-Secondary); outline: none; }
+.px-input input:focus, .px-textarea textarea:focus { border-color: var(--Border-Brand-Primary); box-shadow: 0 0 0 2px var(--Border-Brand-Inverse); }
+
+// Footer wrapper (moved from components)
+.px-footer {
+  background: var(--Background-Pink-Default);
+  color: var(--Text-Neutral-Inverse-Primary);
+}
+
+/* Footer spacing and content layout */
+footer.px-footer { padding: var(--px-footer-padding-y) 0; }
+footer.px-footer .container { gap: var(--Space-lg); }
+footer.px-footer .px-footer-desc { max-width: 840px; }
+
+@media (max-width: 1199px) { .px-row--2 { grid-template-columns: 1fr; } }
+@media (max-width: 767px) {
+  .px-hero__title { font-size: 36px; line-height: 48px; }
+  .px-h2 { font-size: 32px; line-height: 40px; }
+}
+
+// Spacing utility for Portfolio CTA to grid gap
+.px-portfolio-cta { margin-bottom: var(--px-portfolio-cta-gap); } // 60px
+
+/* About section specific spacing aligned to Figma */
+#about.px-section { padding: var(--Space-full-about-padding) 0; }
+#about .px-h2 { margin-bottom: var(--px-section-header-gap-xl); }
+#about .px-row { gap: var(--Space-4xl); } /* 60px between cards */
+
+/* Services spacing: center header block, apply Gap/XL under H2, tokenized gaps for tabs */
+#services.px-section { padding: var(--px-services-padding-y) 0; }
+#services .px-h2 { margin-bottom: var(--px-section-header-gap-xl); }
+#services .pinx-tabs { margin-top: var(--px-services-tabs-gap); }
+#services .pinx-tab-content-wrapper { margin-top: var(--px-services-tabs-gap); }
+
+/* Portfolio spacing: header gap below H2 and CTA gap before grid using tokens */
+#portfolio.px-section { padding: var(--px-portfolio-padding-y) 0; }
+#contact.px-section { padding: var(--px-contact-padding-y) 0; }
+/* Contact: Eyebrow to content uses Padding/Full (99px); H2 to body uses Gap/L (24px); columns gap is 60px */
+#contact .px-eyebrow { margin-bottom: var(--px-contact-padding-y); }
+#contact .px-h2 { margin-bottom: var(--Space-xl); }
+#contact .row { --bs-gutter-x: var(--Space-4xl); }
+/* Contact map placeholder */
+#contact .px-map { height: 450px; background: var(--Background-Neutral-Secondary); border-radius: 10px; }
+/* Second row gap is 40px between columns on Figma; use tokenized medium gap for safety */
+#contact .row + .row { margin-top: var(--px-hero-pb); } /* reuse 50px as section sub-gap; adjustable */
+#portfolio .px-h2 { margin-bottom: var(--px-section-header-gap-xl); }
+#portfolio .px-portfolio-cta { margin-bottom: var(--px-portfolio-cta-gap); }

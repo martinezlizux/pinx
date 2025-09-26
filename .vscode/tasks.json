@@ -1,0 +1,233 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build Sass",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Rebuild Sass",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Final Sass Build",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Build Sass (Header Refinement)",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Build Sass (btn-secondary header)",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Build Sass (px-button states)",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Build Sass (consolidated buttons)",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Build Sass (px alias sizes)",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Build Sass",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build Sass",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build Sass",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Remove unused partials",
+			"type": "shell",
+			"command": "bash",
+			"args": [
+				"-lc",
+				"rm -f scss/custom/_components.scss scss/custom/_layout.scss scss/custom/_utilities.scss scss/custom/_px-buttons.scss scss/custom/_Pinx-variables.scss && ls -1 scss/custom"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Build Sass",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build Sass",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build Sass",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build Sass",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build Sass",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build Sass",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:sass"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		}
+	]
+}

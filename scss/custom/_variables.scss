@@ -1,30 +1,395 @@
+@use "sass:math";
 /* Pinx design tokens and CSS variable fallbacks */
+/*
+  Consolidated variables file: includes both project tokens (Sass + CSS) and
+  Figma-generated CSS variables for dynamic theming. This replaces _Pinx-variables.scss.
+*/
+
+/* Atomic variables from Figma (light/dark primitives) */
+[data-Primitives="Light"] {
+  --Purple-50: rgb(252, 235, 255);
+  --Purple-100: rgb(227, 189, 235);
+  --Purple-200: rgb(212, 158, 222);
+  --Purple-300: rgb(199, 125, 214);
+  --Purple-400: rgb(184, 94, 201);
+  --Purple-500: rgb(171, 61, 191);
+  --Purple-600: rgb(143, 51, 161);
+  --Purple-700: rgb(115, 41, 130);
+  --Purple-800: rgb(87, 31, 97);
+  --Sand-50: rgb(255, 247, 235);
+  --Purple-900: rgb(59, 20, 64);
+  --Sand-100: rgb(255, 240, 217);
+  --Sand-200: rgb(255, 235, 207);
+  --Sand-300: rgb(255, 230, 199);
+  --Sand-400: rgb(255, 227, 189);
+  --Sand-500: rgb(255, 222, 179);
+  --Sand-600: rgb(222, 194, 156);
+  --Sand-700: rgb(191, 166, 133);
+  --Sand-800: rgb(158, 138, 110);
+  --Sand-900: rgb(125, 110, 87);
+  --Orange-50: rgb(255, 247, 230);
+  --Orange-100: rgb(255, 214, 130);
+  --Orange-200: rgb(255, 204, 97);
+  --Orange-300: rgb(255, 194, 64);
+  --Orange-400: rgb(255, 184, 33);
+  --Orange-500: rgb(255, 173, 0);
+  --Orange-600: rgb(222, 153, 0);
+  --Orange-700: rgb(191, 130, 0);
+  --Orange-800: rgb(158, 107, 0);
+  --Pink-50: rgb(255, 237, 245);
+  --Orange-900: rgb(125, 84, 0);
+  --Pink-100: rgb(255, 130, 184);
+  --Pink-200: rgb(255, 97, 163);
+  --Pink-300: rgb(255, 64, 145);
+  --Pink-400: rgb(255, 33, 128);
+  --Pink-500: rgb(255, 0, 107);
+  --Pink-600: rgb(222, 0, 94);
+  --Pink-700: rgb(191, 0, 79);
+  --Grayscale-0: rgb(255, 255, 255);
+  --Pink-800: rgb(158, 0, 66);
+  --Grayscale-50: rgb(237, 237, 237);
+  --Pink-900: rgb(125, 0, 54);
+  --Grayscale-100: rgb(207, 204, 207);
+  --Grayscale-200: rgb(176, 171, 176);
+  --Grayscale-300: rgb(161, 156, 158);
+  --Grayscale-400: rgb(143, 140, 143);
+  --Grayscale-500: rgb(128, 122, 128);
+  --Grayscale-600: rgb(112, 107, 112);
+  --Grayscale-700: rgb(97, 92, 94);
+  --Grayscale-800: rgb(79, 77, 79);
+  --Grayscale-900: rgb(64, 61, 64);
+  --Grayscale-950: rgb(28, 26, 28);
+  --Purple-950: rgb(46, 28, 51);
+  --Sand-950: rgb(69, 43, 10);
+  --Grayscale-999: rgb(0, 0, 0);
+  --Orange-950: rgb(74, 51, 10);
+  --Grayscale-White: rgb(255, 255, 255);
+  --Grayscale-Black: rgb(0, 0, 0);
+  --Pink-950: rgb(94, 10, 46);
+  --Green-50: rgb(240, 255, 245);
+  --Green-100: rgb(138, 219, 171);
+  --Green-200: rgb(107, 209, 150);
+  --Green-300: rgb(77, 199, 130);
+  --Green-400: rgb(48, 191, 110);
+  --Green-500: rgb(18, 181, 89);
+  --Green-600: rgb(15, 158, 79);
+  --Green-700: rgb(13, 138, 66);
+  --Green-800: rgb(10, 115, 56);
+  --Green-900: rgb(10, 92, 46);
+  --Green-950: rgb(5, 66, 33);
+}
+
+[data-Primitives="Dark"] {
+  --Purple-50: rgb(43, 8, 33);
+  --Purple-100: rgb(71, 18, 59);
+  --Purple-200: rgb(89, 23, 74);
+  --Purple-300: rgb(107, 26, 87);
+  --Purple-400: rgb(125, 31, 102);
+  --Purple-500: rgb(143, 36, 115);
+  --Purple-600: rgb(158, 64, 133);
+  --Purple-700: rgb(171, 89, 150);
+  --Purple-800: rgb(186, 117, 168);
+  --Sand-50: rgb(69, 43, 10);
+  --Purple-900: rgb(199, 145, 186);
+  --Sand-100: rgb(125, 110, 87);
+  --Sand-200: rgb(158, 138, 110);
+  --Sand-300: rgb(191, 166, 133);
+  --Sand-400: rgb(222, 194, 156);
+  --Sand-500: rgb(255, 222, 179);
+  --Sand-600: rgb(255, 227, 189);
+  --Sand-700: rgb(255, 230, 199);
+  --Sand-800: rgb(255, 235, 207);
+  --Sand-900: rgb(255, 240, 217);
+  --Orange-50: rgb(74, 51, 10);
+  --Orange-100: rgb(125, 84, 0);
+  --Orange-200: rgb(158, 107, 0);
+  --Orange-300: rgb(191, 130, 0);
+  --Orange-400: rgb(222, 153, 0);
+  --Orange-500: rgb(255, 173, 0);
+  --Orange-600: rgb(255, 184, 33);
+  --Orange-700: rgb(255, 194, 64);
+  --Orange-800: rgb(255, 204, 97);
+  --Pink-50: rgb(94, 10, 46);
+  --Orange-900: rgb(255, 214, 130);
+  --Pink-100: rgb(125, 0, 54);
+  --Pink-200: rgb(158, 0, 66);
+  --Pink-300: rgb(191, 0, 79);
+  --Pink-400: rgb(222, 0, 94);
+  --Pink-500: rgb(255, 0, 107);
+  --Pink-600: rgb(255, 33, 128);
+  --Pink-700: rgb(255, 64, 145);
+  --Grayscale-0: rgb(0, 0, 0);
+  --Pink-800: rgb(255, 97, 163);
+  --Grayscale-50: rgb(28, 26, 28);
+  --Pink-900: rgb(255, 130, 184);
+  --Grayscale-100: rgb(64, 61, 64);
+  --Grayscale-200: rgb(79, 77, 79);
+  --Grayscale-300: rgb(97, 92, 94);
+  --Grayscale-400: rgb(112, 107, 112);
+  --Grayscale-500: rgb(128, 122, 128);
+  --Grayscale-600: rgb(143, 140, 143);
+  --Grayscale-700: rgb(161, 156, 158);
+  --Grayscale-800: rgb(176, 171, 176);
+  --Grayscale-900: rgb(237, 237, 237);
+  --Grayscale-950: rgb(232, 230, 232);
+  --Purple-950: rgb(240, 214, 235);
+  --Sand-950: rgb(255, 247, 235);
+  --Grayscale-999: rgb(255, 255, 255);
+  --Orange-950: rgb(255, 237, 194);
+  --Grayscale-White: rgb(255, 255, 255);
+  --Grayscale-Black: rgb(0, 0, 0);
+  --Pink-950: rgb(255, 194, 219);
+  --Green-50: rgb(5, 66, 33);
+  --Green-100: rgb(10, 92, 46);
+  --Green-200: rgb(10, 115, 56);
+  --Green-300: rgb(13, 138, 66);
+  --Green-400: rgb(15, 158, 79);
+  --Green-500: rgb(18, 181, 89);
+  --Green-600: rgb(48, 191, 110);
+  --Green-700: rgb(77, 199, 130);
+  --Green-800: rgb(107, 209, 150);
+  --Green-900: rgb(138, 219, 171);
+  --Green-950: rgb(209, 232, 219);
+}
+
+/* Semantic aliases and additional collections */
+[data-Colour-Usage="Mode-1"] {
+  --Background-Neutral-Primary-50-opacity: rgba(255, 255, 255, 0.5);
+  --Background-Semantic-Success-Subtle-2: rgb(255, 255, 255);
+  --Border-Neutral-Inverse-Primary: rgb(255, 255, 255);
+  --Border-Neutral-Inverse-Secondary: rgb(255, 255, 255);
+}
+
+[data-Gallery="Mode-1"] {
+  --Tab: "Gran Formato";
+}
+
+/* Fallback and alias variables (:root) */
 :root {
-  /* Base theme tokens */
+  /* Bootstrap-related CSS variables for convenience */
   --bs-primary: #ff006c;
   --bs-primary-rgb: 255, 0, 108;
   --bs-secondary: #ffedf5;
-
-  /* Background colors */
-  --Background-Pink-Default: #ff006c;
-  --Background-Pink-Dark: #de005e;
-  --Background-Pink-Subtle: #ffedf5;
-  --Background-Neutral-Primary: #ffffff;
-  --Background-Neutral-Secondary: #eeeced;
-  --Background-Neutral-Primary-50: rgba(255, 255, 255, 0.5);
-
-  /* Text colors */
-  --Text-Neutral-Primary: #1c1a1c;
-  --Text-Neutral-Secondary: #504c4f;
-  --Text-Neutral-Tertiary: #a09b9f;
-  --Text-Neutral-Inverse-Primary: #ffffff;
-  --Text-Pink-Default: #ff006c;
-
-  /* Border colors */
-  --Border-Neutral-Secondary: #908b8f;
+  /* Project-specific tokens not in Figma aliases */
   --Border-Neutral: #b0acaf;
-  --Border-Brand-Primary: #de005e;
-  --Border-Brand-Inverse: #ffedf5;
+  
+  /* Default values for variables when no specific mode is active */
+  --Purple-50: rgb(252, 235, 255);
+  --Purple-100: rgb(227, 189, 235);
+  --Purple-200: rgb(212, 158, 222);
+  --Purple-300: rgb(199, 125, 214);
+  --Purple-400: rgb(184, 94, 201);
+  --Purple-500: rgb(171, 61, 191);
+  --Purple-600: rgb(143, 51, 161);
+  --Purple-700: rgb(115, 41, 130);
+  --Purple-800: rgb(87, 31, 97);
+  --Sand-50: rgb(255, 247, 235);
+  --Purple-900: rgb(59, 20, 64);
+  --Sand-100: rgb(255, 240, 217);
+  --Sand-200: rgb(255, 235, 207);
+  --Sand-300: rgb(255, 230, 199);
+  --Sand-400: rgb(255, 227, 189);
+  --Sand-500: rgb(255, 222, 179);
+  --Sand-600: rgb(222, 194, 156);
+  --Sand-700: rgb(191, 166, 133);
+  --Sand-800: rgb(158, 138, 110);
+  --Sand-900: rgb(125, 110, 87);
+  --Orange-50: rgb(255, 247, 230);
+  --Orange-100: rgb(255, 214, 130);
+  --Orange-200: rgb(255, 204, 97);
+  --Orange-300: rgb(255, 194, 64);
+  --Orange-400: rgb(255, 184, 33);
+  --Orange-500: rgb(255, 173, 0);
+  --Orange-600: rgb(222, 153, 0);
+  --Orange-700: rgb(191, 130, 0);
+  --Orange-800: rgb(158, 107, 0);
+  --Pink-50: rgb(255, 237, 245);
+  --Orange-900: rgb(125, 84, 0);
+  --Pink-100: rgb(255, 130, 184);
+  --Pink-200: rgb(255, 97, 163);
+  --Pink-300: rgb(255, 64, 145);
+  --Pink-400: rgb(255, 33, 128);
+  --Pink-500: rgb(255, 0, 107);
+  --Pink-600: rgb(222, 0, 94);
+  --Pink-700: rgb(191, 0, 79);
+  --Grayscale-0: rgb(255, 255, 255);
+  --Pink-800: rgb(158, 0, 66);
+  --Grayscale-50: rgb(237, 237, 237);
+  --Pink-900: rgb(125, 0, 54);
+  --Grayscale-100: rgb(207, 204, 207);
+  --Grayscale-200: rgb(176, 171, 176);
+  --Grayscale-300: rgb(161, 156, 158);
+  --Grayscale-400: rgb(143, 140, 143);
+  --Grayscale-500: rgb(128, 122, 128);
+  --Grayscale-600: rgb(112, 107, 112);
+  --Grayscale-700: rgb(97, 92, 94);
+  --Grayscale-800: rgb(79, 77, 79);
+  --Grayscale-900: rgb(64, 61, 64);
+  --Grayscale-950: rgb(28, 26, 28);
+  --Purple-950: rgb(46, 28, 51);
+  --Sand-950: rgb(69, 43, 10);
+  --Grayscale-999: rgb(0, 0, 0);
+  --Orange-950: rgb(74, 51, 10);
+  --Grayscale-White: rgb(255, 255, 255);
+  --Grayscale-Black: rgb(0, 0, 0);
+  --Pink-950: rgb(94, 10, 46);
+  --Green-50: rgb(240, 255, 245);
+  --Green-100: rgb(138, 219, 171);
+  --Green-200: rgb(107, 209, 150);
+  --Green-300: rgb(77, 199, 130);
+  --Green-400: rgb(48, 191, 110);
+  --Green-500: rgb(18, 181, 89);
+  --Green-600: rgb(15, 158, 79);
+  --Green-700: rgb(13, 138, 66);
+  --Green-800: rgb(10, 115, 56);
+  --Green-900: rgb(10, 92, 46);
+  --Green-950: rgb(5, 66, 33);
+  --Background-Neutral-Primary-50-opacity: rgba(255, 255, 255, 0.5);
+  --Background-Semantic-Success-Subtle-2: rgb(255, 255, 255);
+  --Border-Neutral-Inverse-Primary: rgb(255, 255, 255);
+  --Border-Neutral-Inverse-Secondary: rgb(255, 255, 255);
+  --Tab: "Gran Formato";
+  --Background-Neutral-Primary: var(--Grayscale-0);
+  --Background-Neutral-Secondary: var(--Grayscale-50);
+  --Background-Neutral-Tertiary: var(--Grayscale-200);
+  --Background-Neutral-Disable: var(--Grayscale-100);
+  --Background-Neutral-Inverse-Primary: var(--Grayscale-999);
+  --Background-Neutral-Inverse-Secondary: var(--Grayscale-800);
+  --Background-Pink-Dark: var(--Pink-700);
+  --Background-Neutral-Inverse-Tertiary: var(--Grayscale-400);
+  --Background-Pink-Default: var(--Pink-500);
+  --Background-Purple-Dark: var(--Purple-700);
+  --Background-Purple-Default: var(--Purple-500);
+  --Background-Purple-Light: var(--Purple-200);
+  --Background-Purple-Subtle: var(--Purple-50);
+  --Background-Pink-Light: var(--Pink-200);
+  --Background-Pink-Subtle: var(--Pink-50);
+  --Background-Orange-Dark: var(--Orange-700);
+  --Background-Orange-Default: var(--Orange-500);
+  --Background-Orange-Light: var(--Orange-200);
+  --Background-Orange-Subtle: var(--Orange-50);
+  --Background-Green-Dark: var(--Green-700);
+  --Background-Green-Default: var(--Green-500);
+  --Background-Green-Light: var(--Green-200);
+  --Background-Green-Subtle: var(--Green-50);
+  --Background-Semantic-Success-Subtle: var(--Green-50);
+  --Background-Semantic-Success-Bold: var(--Green-400);
+  --Background-Semantic-Warning-Subtle: var(--Orange-50);
+  --Background-Semantic-Warning-Color: var(--Orange-500);
+  --Background-Semantic-Error-Subtle: var(--Pink-50);
+  --Background-Semantic-Error-Bold: var(--Pink-800);
+  --Background-Semantic-Info-Subtle: var(--Purple-50);
+  --Background-Semantic-Info-Bold: var(--Purple-700);
+  --Text-Neutral-Primary: var(--Grayscale-950);
+  --Text-Neutral-Secondary: var(--Grayscale-800);
+  --Text-Neutral-Tertiary: var(--Grayscale-300);
+  --Text-Neutral-Disable: var(--Grayscale-400);
+  --Text-Neutral-Inverse-Primary: var(--Grayscale-White);
+  --Text-Pink-Dark: var(--Pink-800);
+  --Text-Purple-Dark: var(--Purple-800);
+  --Text-Orange-Dark: var(--Orange-800);
+  --Text-Orange-Default: var(--Orange-500);
+  --Text-Orange-Light: var(--Orange-100);
+  --Text-Purple-Default: var(--Purple-500);
+  --Text-Purple-Light: var(--Purple-100);
+  --Text-Pink-Default: var(--Pink-500);
+  --Text-Pink-Light: var(--Pink-100);
+  --Text-Neutral-Inverse-Secondary: var(--Grayscale-50);
+  --Text-Neutral-Inverse-Tertiary: var(--Grayscale-800);
+  --Text-Green-Dark: var(--Green-800);
+  --Text-Gray-Darker: var(--Grayscale-999);
+  --Text-Gray-Dark: var(--Grayscale-800);
+  --Text-Gray-Default: var(--Grayscale-500);
+  --Text-Gray-Light: var(--Grayscale-100);
+  --Text-Gray-White: var(--Grayscale-0);
+  --Text-Green-Default: var(--Green-500);
+  --Text-Green-Light: var(--Green-100);
+  --Text-Semantic-Success-Primary: var(--Green-600);
+  --Text-Semantic-Success-Inverse: var(--Grayscale-0);
+  --Text-Semantic-Warning-Primary: var(--Orange-700);
+  --Text-Semantic-Warning-Inverse: var(--Grayscale-0);
+  --Text-Semantic-Error-Primary: var(--Pink-800);
+  --Text-Semantic-Error-Inverse: var(--Grayscale-0);
+  --Text-Semantic-Info-Primary: var(--Purple-500);
+  --Text-Semantic-Info-Inverse: var(--Grayscale-0);
+  --Border-Neutral-Primary: var(--Grayscale-700);
+  --Border-Neutral-Secondary: var(--Grayscale-400);
+  --Border-Brand-Primary: var(--Pink-600);
+  --Border-Brand-Inverse: var(--Pink-50);
+  --Border-Semantic-Success-Default: var(--Green-600);
+  --Border-Semantic-Success-Secondary: var(--Green-50);
+  --Border-Semantic-Warning-Primary: var(--Orange-500);
+  --Border-Semantic-Warning-Secondary: var(--Orange-50);
+  --Border-Semantic-Error-Default: var(--Pink-700);
+  --Border-Semantic-Error-Secondary: var(--Pink-50);
+  --Border-Semantic-Info-Primary: var(--Purple-600);
+  --Border-Semantic-Info-Inverse: var(--Purple-50);
+
+  /* Spacing scale (Figma-driven) */
+  --Space-xxs: 4px;
+  --Space-xs: 8px;
+  --Space-sm: 12px;
+  --Space-md: 16px;
+  --Space-lg: 20px;
+  --Space-xl: 24px;
+  --Space-2xl: 30px;
+  --Space-3xl: 40px;
+  --Space-4xl: 60px;
+  --Space-5xl: 100px;
+  /* Figma specific sizes seen in About */
+  --Space-xxl-about-gap: 56px; /* Gap/XL in About */
+  --Space-full-about-padding: 99px; /* Padding/Full in About */
+
+  /* Semantic spacing aliases (used across layout/components) */
+  --px-section-padding-y: var(--Space-5xl); /* default section vertical padding (100px) */
+  --px-gap-lg: var(--Space-3xl);  /* large grid row gap (e.g., 40px) */
+  --px-gap-md: var(--Space-2xl);  /* medium grid gap (e.g., 30px) */
+  --px-gap-sm: var(--Space-xs);   /* small gaps (e.g., 8px) */
+  --px-gap-xl: var(--Space-xxl-about-gap); /* 56px gap used in About title spacing */
+  --px-form-padding: var(--Space-xl); /* 24px form padding */
+  --px-form-gap: var(--Space-lg);     /* 20px gap between form fields */
+  --px-input-gap: var(--Space-xs);    /* 8px gap between label and input */
+  --px-portfolio-cta-gap: var(--Space-4xl); /* 60px bottom margin before grid */
+  --px-hero-pt: 170px; /* hero top padding */
+  --px-hero-pb: 50px;  /* hero bottom padding */
+  --px-input-padding: 13px; /* inner padding for text inputs */
+  --px-control-padding-y: 17px;
+  --px-control-padding-x: 13px;
+  --px-textarea-padding-top: 27px;
+  --px-textarea-padding-bottom: 11px;
+
+  /* Section-specific semantic aliases */
+  /* Raw section tokens (Padding/Full & Gap/XL per section) */
+  --Space-full-services-padding: var(--px-section-padding-y);
+  --Space-xxl-services-gap: var(--px-gap-xl);
+  --Space-full-portfolio-padding: var(--px-section-padding-y);
+  --Space-xxl-portfolio-gap: var(--px-gap-xl);
+
+  /* Aliases derived from raw section tokens */
+  --px-services-header-gap: var(--Space-xxl-services-gap); /* 56px below Services H2 */
+  --px-services-tabs-gap: var(--Space-lg);    /* 20px between heading block and tabs */
+  --px-portfolio-header-gap: var(--Space-xxl-portfolio-gap); /* 56px below Portfolio H2 */
+  --px-portfolio-cta-gap: var(--Space-4xl);   /* 60px before grid */
+  --px-services-padding-y: var(--Space-full-services-padding); /* allow overriding Services section padding if needed */
+  --px-portfolio-padding-y: var(--Space-full-portfolio-padding);
+
+  /* Global header gap for section H2 blocks (defaults to Gap/XL) */
+  --px-section-header-gap-xl: var(--px-gap-xl);
+
+  /* Hero & Contact section-specific spacing tokens */
+  --Space-full-hero-padding: var(--px-section-padding-y);
+  --Space-xxl-hero-gap: var(--px-gap-xl);
+  --px-hero-padding-y: var(--Space-full-hero-padding);
+  --px-hero-gap-xl: var(--Space-xxl-hero-gap);
+
+  --Space-full-contact-padding: 99px; /* Figma Padding/Full for Contact */
+  --Space-xxl-contact-gap: var(--px-gap-xl);
+  --px-contact-padding-y: var(--Space-full-contact-padding);
+  --px-contact-gap-xl: var(--Space-xxl-contact-gap);
+
+  /* Footer section-specific spacing tokens */
+  --Space-full-footer-padding: var(--px-section-padding-y);
+  --px-footer-padding-y: var(--Space-full-footer-padding);
 }
 
 /* Typography */
@@ -61,3 +426,113 @@ $line-height-heading-h1: 80px !default;
 $line-height-heading-h2: 60px !default;
 $line-height-heading-h3: 40px !default;
 $line-height-body: 36px !default;
+
+// -----------------------------------------
+// Bootstrap typography mapping (rem-based)
+// -----------------------------------------
+// Base font size / line-height
+$pinx-font-size-base: 1rem !default;                // 16px
+$pinx-line-height-base: $line-height-normal !default; // 1.5
+
+// Heading sizes (derived from existing px sizes)
+$pinx-h1-font-size: math.div($font-size-5xl, 16px) * 1rem !default; // 52px => 3.25rem
+$pinx-h2-font-size: math.div($font-size-4xl, 16px) * 1rem !default; // 48px => 3rem
+$pinx-h3-font-size: math.div($font-size-3xl, 16px) * 1rem !default; // 32px => 2rem
+$pinx-h4-font-size: math.div($font-size-2xl, 16px) * 1rem !default; // 28px => 1.75rem
+$pinx-h5-font-size: math.div($font-size-xl, 16px) * 1rem !default;  // 24px => 1.5rem
+$pinx-h6-font-size: math.div($font-size-lg, 16px) * 1rem !default;  // 20px => 1.25rem
+
+// Heading line-height and weight
+$pinx-headings-line-height: $line-height-tight !default;     // ~1.2
+$pinx-headings-font-weight: $font-weight-bold !default;      // 700
+
+// Small and lead sizes
+$pinx-small-font-size: math.div($font-size-sm, 16px) * 1rem !default;   // 14px => .875rem
+$pinx-lead-font-size: 1.25rem !default; // lead text ≈ 20px
+
+// Headings font-family (use primary unless design specifies otherwise)
+$pinx-headings-font-family: $font-primary !default;
+
+// Display scale (approximate extension of Figma scale)
+// Note: If Figma provides explicit display sizes, replace these values accordingly.
+$pinx-display-font-sizes: (
+  1: 4rem,   // 64px
+  2: 3.5rem, // 56px
+  3: 3rem,   // 48px (≈ h2)
+  4: 2.5rem, // 40px
+  5: 2rem,   // 32px (≈ h3)
+  6: 1.75rem // 28px (≈ h4)
+) !default;
+$pinx-display-font-weight: $font-weight-extrabold !default; // 800
+$pinx-display-line-height: $line-height-tight !default;     // ~1.2
+
+// Pinx color variables (Sass) mapped from design tokens
+// Keep in sync with :root CSS variables above
+$pinx-primary: var(--Pink-500) !default;           // --Pink-500
+$pinx-primary-dark: var(--Pink-800) !default;      // --Pink-800
+$pinx-neutral-primary: var(--Background-Neutral-Primary) !default;   // --Background-Neutral-Primary
+$pinx-neutral-secondary: var(--Background-Neutral-Secondary) !default; // --Background-Neutral-Secondary
+$pinx-success: var(--Green-500) !default;           // Green-500
+$pinx-info: var(--Purple-500) !default;              // Purple-500
+$pinx-warning: var(--Orange-500) !default;           // Orange-500
+$pinx-danger: var(--Pink-700) !default;            // Pink-700
+$pinx-light: var(--Background-Neutral-Secondary) !default;             // Neutral Secondary
+$pinx-dark: var(--Text-Neutral-Primary) !default;              // Text-Neutral-Primary
+
+// Text & Border tokens
+$pinx-text-primary: var(--Text-Neutral-Primary) !default;            // --Text-Neutral-Primary
+$pinx-text-inverse: var(--Text-Neutral-Inverse-Primary) !default;            // --Text-Neutral-Inverse-Primary
+$pinx-text-secondary: var(--Text-Neutral-Secondary) !default;          // --Text-Neutral-Secondary
+$pinx-border-default: var(--Border-Neutral) !default;          // --Border-Neutral
+$pinx-border-brand: var(--Border-Brand-Primary) !default;            // --Border-Brand-Primary
+
+// Link colors (derived from brand)
+$pinx-link: $pinx-primary !default;
+$pinx-link-hover: $pinx-primary-dark !default; // lighter tint of primary
+
+// Radii
+$pinx-radius-pill: 43px !default;
+$pinx-radius-md: .5rem !default;
+
+// Solid Sass colors for Bootstrap mapping (avoid CSS variables in Sass math)
+// Derived from the :root fallback RGB values above
+$pinx-color-primary: #FF006B !default;        // Pink-500 rgb(255,0,107)
+$pinx-color-primary-dark: #9E0042 !default;   // approx Pink-800 rgb(158,0,66)
+$pinx-color-secondary: #EDEDED !default;      // Grayscale-50 rgb(237,237,237)
+$pinx-color-success: #12B559 !default;        // Green-500 rgb(18,181,89)
+$pinx-color-info: #AB3DBF !default;           // Purple-500 rgb(171,61,191)
+$pinx-color-warning: #FFAD00 !default;        // Orange-500 rgb(255,173,0)
+$pinx-color-danger: #BF004F !default;         // Pink-700 rgb(191,0,79)
+$pinx-color-light: #EDEDED !default;          // same as secondary
+$pinx-color-dark: #1C1A1C !default;           // Grayscale-950 rgb(28,26,28)
+
+// Link colors (Sass constants)
+$pinx-color-link: $pinx-color-primary !default;
+$pinx-color-link-hover: #E60061 !default;     // manual hover variant
+
+// Border color (Sass constant)
+$pinx-color-border-default: #B0ACAF !default; // --Border-Neutral
+
+// Spacing scale (Sass). Match figma spacing tokens if available.
+$pinx-spacer: 1rem !default; // base = 16px
+$pinx-spacers: (
+  0: 0,
+  1: $pinx-spacer * .25,  // 4px
+  2: $pinx-spacer * .5,   // 8px
+  3: $pinx-spacer,        // 16px
+  4: $pinx-spacer * 1.5,  // 24px
+  5: $pinx-spacer * 2,    // 32px
+  6: $pinx-spacer * 3,    // 48px
+  7: $pinx-spacer * 4,    // 64px
+  8: $pinx-spacer * 5     // 80px
+) !default;
+
+// Breakpoints (Sass)
+$pinx-grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;

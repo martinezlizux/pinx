@@ -5,8 +5,8 @@
   "description": "Proyecto Pinx - compilación automática de SCSS a assets/css/styles.css",
   "main": "index.js",
   "scripts": {
-    "build:sass": "sass scss/styles.scss assets/css/styles.css --no-source-map",
-    "watch:sass": "sass --watch scss/styles.scss:assets/css/styles.css --no-source-map",
+    "build:sass": "sass --quiet-deps --load-path=node_modules scss/styles.scss assets/css/styles.css --no-source-map",
+    "watch:sass": "sass --quiet-deps --load-path=node_modules --watch scss/styles.scss:assets/css/styles.css --no-source-map",
     "build": "npm run build:sass",
     "start": "npm run watch:sass"
   },

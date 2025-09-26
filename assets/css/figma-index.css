@@ -1,0 +1,69 @@
+/* Generated plain CSS derived from Figma tokens and project conventions */
+:root {
+  --pink: #ff006c; /* Background/Pink/Default */
+  --pink-subtle: #ffedf5; /* Background/Pink/Subtle */
+  --brand-border: #de005e; /* Border/Brand/Primary */
+  --text-primary: #1c1a1c; /* Text/Neutral/Primary */
+  --text-secondary: #504c4f; /* Text/Neutral/Secondary */
+  --text-tertiary: #a09b9f; /* Text/Neutral/Tertiary */
+  --bg-primary: #ffffff; /* Background/Neutral/Primary */
+  --bg-secondary: #eeeced; /* Background/Neutral/Secondary */
+  --radius-lg: 20px;
+  --radius-pill: 43px;
+  --shadow-sm: 0 4px 4px rgba(0,0,0,0.25);
+  --container: 1240px;
+}
+
+html, body {
+  margin: 0; padding: 0; background: var(--bg-primary); color: var(--text-primary);
+  font-family: Onest, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.px-container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
+.px-section { padding: 100px 0; }
+.px-section--hero { padding-top: 170px; padding-bottom: 50px; text-align: center; }
+
+.px-header { position: sticky; top: 0; backdrop-filter: blur(4px); background: rgba(255,255,255,0.5); }
+.px-header__inner { display: flex; align-items: center; justify-content: space-between; padding: 30px 50px; max-width: 1440px; margin: 0 auto; }
+.px-logo__text { font-family: 'Open Sans', sans-serif; font-weight: 800; font-size: 32px; background: linear-gradient(90deg, #ed437f, #9842b4 45.192%, #534ae5); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+.px-hero__title { font-weight: 900; font-size: 52px; line-height: 80px; background: linear-gradient(90deg, #ed437f, #9842b4 45.192%, #534ae5); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
+.px-h2 { font-weight: 700; font-size: 48px; line-height: 60px; margin: 0 0 20px; }
+.px-eyebrow { color: var(--text-tertiary); font-weight: 600; font-size: 24px; line-height: 60px; letter-spacing: 10px; text-transform: uppercase; margin: 0 0 20px; }
+.px-lead { font-weight: 500; font-size: 20px; line-height: 36px; color: var(--text-primary); margin: 0 0 20px; }
+.px-body { font-size: 20px; line-height: 1.5; color: var(--text-primary); }
+
+.px-row { display: grid; gap: 40px; }
+.px-row--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.px-grid { display: grid; gap: 30px; }
+.px-grid--4x2 { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 163px; }
+.px-grid--3 { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 275px; }
+
+.px-card { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 40px; color: var(--text-primary); }
+.px-card__title { font-weight: 700; font-size: 28px; line-height: 40px; margin: 0 0 12px; }
+.px-card__desc { font-weight: 600; font-size: 20px; line-height: 32px; color: var(--text-secondary); margin: 0; }
+
+.px-img.ph, .px-grid .ph { background: var(--bg-secondary); border-radius: 10px; height: 200px; }
+.px-icon { width: 66px; height: 66px; border-radius: 7px; box-shadow: var(--shadow-sm); border: 3px solid var(--brand-border); }
+
+.px-btn { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 12px 20px; border-radius: var(--radius-pill); text-decoration: none; font-weight: 600; }
+.px-btn--primary { background: var(--pink); color: #fff; border: 1px solid var(--brand-border); }
+.px-btn--secondary { background: #fff; color: var(--pink); border: 1px solid #ffedf5; }
+
+.px-form { display: grid; gap: 20px; background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 24px; }
+.px-input, .px-textarea { display: grid; gap: 8px; }
+.px-input__label { font-size: 16px; color: var(--text-secondary); opacity: 0.85; }
+.px-input input, .px-textarea textarea { display: block; width: 100%; padding: 13px; border-radius: 8px; border: 1px solid #b0acaf; outline: none; }
+.px-input input:focus, .px-textarea textarea:focus { border-color: var(--brand-border); box-shadow: 0 0 0 2px #ffedf5; }
+
+.px-footer { background: var(--pink); color: #fff; padding: 100px 0; }
+.px-footer__brand { font-weight: 800; font-size: 28px; margin: 0 0 20px; }
+.px-footer__text { font-size: 20px; line-height: 36px; margin: 0; }
+
+@media (max-width: 1199px) { .px-row--2 { grid-template-columns: 1fr; } }
+@media (max-width: 767px) {
+  .px-header__inner { padding: 16px 20px; }
+  .px-hero__title { font-size: 36px; line-height: 48px; }
+  .px-h2 { font-size: 32px; line-height: 40px; }
+}

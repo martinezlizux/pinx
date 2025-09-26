@@ -3,13 +3,19 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.pinx-tabs').forEach(tabGroup => {
         const tabBtns = tabGroup.querySelectorAll('.pinx-tab-btn');
         const tabContents = tabGroup.parentElement.parentElement.querySelectorAll('.pinx-tab-content');
+
+    // Initialize aria-selected based on presence of pinx-tab-btn--selected
+    tabBtns.forEach(b => b.setAttribute('aria-selected', b.classList.contains('pinx-tab-btn--selected') ? 'true' : 'false'));
+
         tabBtns.forEach(btn => {
             btn.addEventListener('click', function () {
                 tabBtns.forEach(b => {
-                    b.classList.remove('btn-selected');
+                    b.classList.remove('pinx-tab-btn--selected');
+                    b.setAttribute('aria-selected', 'false');
                 });
                 tabContents.forEach(c => c.classList.add('d-none'));
-                btn.classList.add('btn-selected');
+                btn.classList.add('pinx-tab-btn--selected');
+                btn.setAttribute('aria-selected', 'true');
                 const tab = btn.getAttribute('data-tab');
                 tabGroup.parentElement.parentElement.querySelector(`.pinx-tab-content[data-content="${tab}"]`).classList.remove('d-none');
             });
