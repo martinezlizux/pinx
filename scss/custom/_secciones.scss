@@ -9,7 +9,7 @@
 .portfolio-logo-box {
   width: 260px;
   height: 160px;
-  background: var(--Background-Neutral-Secondary);
+  background: var(--Background-Neutral-Secondary) url('../assets/images/logo-placeholder.svg') center/40% no-repeat;
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   display: flex;
@@ -23,7 +23,7 @@
 .portfolio-logo-box {
   width: 260px;
   height: 160px;
-  background: var(--Background-Neutral-Secondary);
+  background: var(--Background-Neutral-Secondary) url('../assets/images/logo-placeholder.svg') center/40% no-repeat;
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   display: flex;

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="180" viewBox="0 0 280 180" role="img" aria-label="Logo placeholder">
+  <rect width="280" height="180" rx="20" ry="20" fill="#f0f0f0" stroke="#e0e0e0"/>
+  <g fill="none" stroke="#cccccc" stroke-width="2">
+    <path d="M30 90 H250"/>
+    <path d="M80 50 Q140 10 200 50"/>
+    <path d="M80 130 Q140 170 200 130"/>
+  </g>
+  <g fill="#bdbdbd" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="140" y="98" font-size="18">Your Logo Here</text>
+  </g>
+</svg>

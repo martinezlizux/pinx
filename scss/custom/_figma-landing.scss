@@ -23,7 +23,11 @@
 .px-grid--3 { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 275px; }
 
 
-.px-img.ph, .px-grid .ph { background: var(--Background-Neutral-Secondary); border-radius: 10px; height: 200px; }
+.px-img.ph, .px-grid .ph {
+  background: var(--Background-Neutral-Secondary) url('../assets/images/placeholder.svg') center/cover no-repeat;
+  border-radius: 10px;
+  height: 200px;
+}
 .px-icon { width: 66px; height: 66px; border-radius: 7px; box-shadow: 0 4px 4px rgba(0,0,0,0.25); border: 3px solid var(--Border-Brand-Primary); }
 
 
@@ -72,7 +76,11 @@ footer.px-footer .px-footer-desc { max-width: 840px; }
 #contact .px-h2 { margin-bottom: var(--Space-xl); }
 #contact .row { --bs-gutter-x: var(--Space-4xl); }
 /* Contact map placeholder */
-#contact .px-map { height: 450px; background: var(--Background-Neutral-Secondary); border-radius: 10px; }
+#contact .px-map {
+  height: 450px;
+  background: var(--Background-Neutral-Secondary) url('../assets/images/map-placeholder.svg') center/cover no-repeat;
+  border-radius: 10px;
+}
 /* Second row gap is 40px between columns on Figma; use tokenized medium gap for safety */
 #contact .row + .row { margin-top: var(--px-hero-pb); } /* reuse 50px as section sub-gap; adjustable */
 #portfolio .px-h2 { margin-bottom: var(--px-section-header-gap-xl); }
