@@ -24,7 +24,7 @@
 
 
 .px-img.ph, .px-grid .ph {
-  background: var(--Background-Neutral-Secondary) url('../assets/images/placeholder.svg') center/cover no-repeat;
+  background: var(--Background-Neutral-Secondary) url('../images/placeholder.svg') center/cover no-repeat;
   border-radius: 10px;
   height: 200px;
 }
@@ -78,7 +78,7 @@ footer.px-footer .px-footer-desc { max-width: 840px; }
 /* Contact map placeholder */
 #contact .px-map {
   height: 450px;
-  background: var(--Background-Neutral-Secondary) url('../assets/images/map-placeholder.svg') center/cover no-repeat;
+  background: var(--Background-Neutral-Secondary) url('../images/map-placeholder.svg') center/cover no-repeat;
   border-radius: 10px;
 }
 /* Second row gap is 40px between columns on Figma; use tokenized medium gap for safety */

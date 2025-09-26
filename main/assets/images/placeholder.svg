@@ -1,15 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-label="Placeholder">
-  <defs>
-    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#eee"/>
-      <stop offset="100%" stop-color="#ddd"/>
-    </linearGradient>
-  </defs>
-  <rect width="600" height="400" fill="url(#g)"/>
-  <g fill="#bbb" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
-    <rect x="140" y="90" width="320" height="220" rx="12" ry="12" fill="#f7f7f7" stroke="#d9d9d9"/>
-    <path d="M180 260 L260 190 L310 230 L360 200 L420 260 Z" fill="#e0e0e0"/>
-    <circle cx="230" cy="180" r="22" fill="#e0e0e0"/>
-    <text x="300" y="360" font-size="20" fill="#9a9a9a">Image placeholder</text>
-  </g>
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_200_3337)">
+<path d="M600 0H0V400H600V0Z" fill="url(#paint0_linear_200_3337)"/>
+<path d="M448 90H152C145.373 90 140 95.3726 140 102V298C140 304.627 145.373 310 152 310H448C454.627 310 460 304.627 460 298V102C460 95.3726 454.627 90 448 90Z" fill="#F7F7F7" stroke="#D9D9D9"/>
+<path d="M180 260L260 190L310 230L360 200L420 260H180Z" fill="#E0E0E0"/>
+<path d="M230 202C242.15 202 252 192.15 252 180C252 167.85 242.15 158 230 158C217.85 158 208 167.85 208 180C208 192.15 217.85 202 230 202Z" fill="#E0E0E0"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_200_3337" x1="0" y1="0" x2="369.231" y2="553.846" gradientUnits="userSpaceOnUse">
+<stop stop-color="#EEEEEE"/>
+<stop offset="1" stop-color="#DDDDDD"/>
+</linearGradient>
+<clipPath id="clip0_200_3337">
+<rect width="600" height="400" fill="white"/>
+</clipPath>
+</defs>
 </svg>
