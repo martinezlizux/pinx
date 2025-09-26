@@ -5,12 +5,18 @@
   "description": "Proyecto Pinx - compilación automática de SCSS a assets/css/styles.css",
   "main": "index.js",
   "scripts": {
-    "build:sass": "sass --quiet-deps --load-path=node_modules scss/styles.scss main/assets/css/styles.css --no-source-map",
-    "watch:sass": "sass --quiet-deps --load-path=node_modules --watch scss/styles.scss:main/assets/css/styles.css --no-source-map",
-    "build": "npm run build:sass",
-    "start": "npm run watch:sass"
+  "build:sass": "sass --style=compressed --quiet-deps --load-path=node_modules scss/styles.scss main/assets/css/styles.css --no-source-map",
+  "watch:sass": "sass --style=compressed --quiet-deps --load-path=node_modules --watch scss/styles.scss:main/assets/css/styles.css --no-source-map",
+  "build:js": "esbuild main/assets/js/main.js main/assets/js/services-tabs.js --minify --bundle --sourcemap=inline --outdir=main/assets/js --out-extension:.js=.min.js --format=iife --target=es2019 --log-level=warning",
+  "watch:js": "esbuild main/assets/js/main.js main/assets/js/services-tabs.js --minify --bundle --sourcemap --outdir=main/assets/js --out-extension:.js=.min.js --format=iife --target=es2019 --log-level=warning --watch",
+  "build:html": "html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true -o main/index.html main/index.html",
+  "build": "npm run build:sass && npm run build:js && npm run build:html",
+    "start": "npm-run-all --parallel watch:sass watch:js"
   },
   "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "html-minifier-terser": "^7.2.0",
+    "esbuild": "^0.23.0",
     "sass": "^1.80.0"
   },
   "keywords": [],
