@@ -22,6 +22,37 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// Dynamic width sync for Services tabs and content wrapper
+document.addEventListener('DOMContentLoaded', () => {
+    const servicesSection = document.querySelector('#services');
+    if (!servicesSection) return;
+    const tabs = servicesSection.querySelector('.pinx-tabs');
+    const wrapper = servicesSection.querySelector('.pinx-tab-content-wrapper');
+    if (!tabs || !wrapper) return;
+
+    let rafId;
+    const applyWidth = () => {
+        rafId && cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+            // Get exact rendered width INCLUDING horizontal padding of .pinx-tabs
+            const w = tabs.offsetWidth;
+            // Apply width to wrapper unless screen is very narrow; then allow 100%
+            if (w < window.innerWidth - 32) {
+                wrapper.style.width = w + 'px';
+            } else {
+                wrapper.style.width = '100%';
+            }
+        });
+    };
+
+    // Recalculate on font load, images, and resize
+    applyWidth();
+    window.addEventListener('resize', applyWidth, { passive: true });
+    // If tabs content changes (e.g., responsive wrapping), observe size
+    const ro = new ResizeObserver(applyWidth);
+    ro.observe(tabs);
+});
 // Services Tabs Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const tabButtons = document.querySelectorAll('.service-tab-btn');

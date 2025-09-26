@@ -46,10 +46,11 @@
 .pinx-tabs {
   background: var(--Background-Neutral-Secondary);
   border-radius: 999px;
-  display: flex;
+  display: inline-flex; /* shrink to content so JS can mirror exact width */
   gap: 1.5rem;
   padding: 0.5rem 1.5rem;
   align-items: center;
+  position: relative;
 }
 .pinx-tab-btn {
   background: transparent;
@@ -85,9 +86,13 @@
   outline: 2px solid var(--Background-Pink-Default);
 }
 .pinx-tab-content-wrapper {
-  width: 100%;
-  justify-content: center;
   display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  /* width will be injected by JS to match .pinx-tabs */
+  transition: width 0.25s ease;
+  padding: 0 0.5rem; /* slight gutter safety on very small screens */
 }
 .pinx-tab-content {
   background: var(--Background-Neutral-Secondary);
