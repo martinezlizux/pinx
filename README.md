@@ -24,13 +24,17 @@ Una landing page moderna y responsive para Pinx Creative Agency, especializada e
 
 ```
 pinx/
-├── assets/
-│   ├── css/
-│   │   └── styles.css          # CSS compilado
-│   ├── images/                 # Imágenes y assets
-│   └── js/
-│       ├── main.js             # Comportamientos globales
-│       └── services-tabs.js    # Funcionalidad de tabs
+├── main/                       # Carpeta publicable (deploy)
+│   ├── assets/
+│   │   ├── css/
+│   │   │   └── styles.css      # CSS compilado desde SCSS
+│   │   ├── images/             # Imágenes y assets
+│   │   └── js/
+│   │       ├── main.js         # Comportamientos globales
+│   │       └── services-tabs.js# Funcionalidad de tabs
+│   ├── index.html              # Página principal
+│   ├── sitemap.xml             # Mapa del sitio
+│   └── robots.txt              # Directivas para crawlers
 ├── scss/
 │   ├── custom/
 │   │   ├── _variables.scss     # Variables unificadas (tokens Sass + CSS vars Figma)
@@ -41,9 +45,6 @@ pinx/
 │   │   ├── _figma-landing.scss # Layout y helpers px-* (Hero, About, etc.)
 │   │   └── _px-cards.scss      # Componentes de tarjeta px-*
 │   └── styles.scss             # Archivo principal SCSS
-├── index.html                  # Página principal
-├── sitemap.xml                 # Mapa del sitio
-├── robots.txt                  # Directivas para crawlers
 ├── package.json                # Dependencias y scripts
 └── README.md                   # Documentación
 ```
@@ -121,8 +122,8 @@ Use the Figma MCP server to pull design output and integrate it into our SCSS sy
 - Keep JS behaviors: tabs use `.pinx-tabs` container, `.pinx-tab-btn` with `data-tab`, and `.pinx-tab-content[data-content]`.
 
 5) Build & verify
-- Run `npm run build:sass` and check `assets/css/styles.css` updates.
-- Quick smoke test: open `index.html` and verify layout and interactivity.
+- Run `npm run build:sass` and check `main/assets/css/styles.css` updates.
+- Quick smoke test: open `main/index.html` and verify layout and interactivity.
 
 Notes
 - Never commit secrets. `.vscode/settings.json` is git-ignored. Use `.vscode/settings.example.json` for sharing.
@@ -264,15 +265,15 @@ $font-size-base: 18px;
 
 ### Producción
 1. Ejecutar `npm run build`
-2. Subir archivos al servidor
+2. Publicar el contenido de la carpeta `main/` (es tu directorio de salida)
 3. Configurar HTTPS
-4. Verificar sitemap.xml
+4. Verificar `main/sitemap.xml`
 
 ### Hosting Recomendado
-- Netlify
-- Vercel
-- GitHub Pages
-- AWS S3 + CloudFront
+- Netlify: Publish directory = `main`
+- Vercel: Output directory = `main`
+- GitHub Pages: Configura Pages para servir desde la carpeta `main/`
+- AWS S3 + CloudFront: Sube el contenido de `main/` al bucket
 
 ## 🤝 Contribución
 
