@@ -1,19 +1,61 @@
 // Figma landing styles mapped to Pinx design tokens (CSS variables)
+@use "./variables" as *;
 
-.px-section { padding: var(--px-section-padding-y) 0; } // section vertical padding from token
+.px-section { padding: var(--Space-full-about-padding) 0; } // unified desktop vertical padding (formerly per-section)
 .px-section--hero { padding-top: var(--px-hero-pt); padding-bottom: var(--px-hero-pb); text-align: center; }
 #hero.px-section { padding: var(--px-hero-padding-y) 0; }
 
+/* Hero title (fluid). Duplicated here instead of @extend due to load order. */
 .px-hero__title {
-  font-weight: 900; font-size: 52px; line-height: 80px; margin: 0;
+  font-family: $font-primary;
+  font-weight: $font-weight-black;
+  font-size: clamp(2.25rem, 1.886rem + 1.818vw, 3.25rem);
+  line-height: 1.1;
   background: linear-gradient(90deg, #ed437f, #9842b4 45.192%, #534ae5);
-  background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  word-break: break-word;
+  margin: 0;
 }
 
-.px-h2 { font-weight: 700; font-size: 48px; line-height: 60px; margin: 0 0 var(--px-gap-xl); color: var(--Text-Neutral-Primary); }
-.px-eyebrow { color: var(--Text-Neutral-Tertiary); font-weight: 600; font-size: 24px; line-height: 60px; letter-spacing: 10px; text-transform: uppercase; margin: 0 0 var(--px-gap-xl); }
-.px-lead { font-weight: 500; font-size: 20px; line-height: 36px; color: var(--Text-Neutral-Primary); margin: 0 0 var(--px-gap-xl); }
-.px-body { font-size: 20px; line-height: 1.5;  }
+.px-h2 {
+  font-weight: 700;
+  /* Fluid size: 32px @320px -> 48px @1200px */
+  font-size: clamp(2rem, 1.5714rem + 1.3393vw, 3rem);
+  line-height: 1.18;
+  margin: 0 0 var(--px-gap-xl);
+  color: inherit;
+  max-width: 28ch; /* limit line length for readability */
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+/* Eyebrow / Lead / Body now fluid. Eyebrow: 14px -> 24px range, Lead maps to body-large clamp, Body maps to body-regular clamp */
+.px-eyebrow {
+  color: var(--Text-Neutral-Tertiary);
+  font-weight: 600;
+  /* 14px -> 24px */
+  font-size: clamp(0.875rem, 0.557rem + 1.591vw, 1.5rem);
+  line-height: 1.3;
+  letter-spacing: 0.625rem; /* 10px => rem */
+  text-transform: uppercase;
+  margin: 0 0 var(--px-gap-xl);
+}
+.px-lead {
+  font-weight: 500;
+  font-family: $font-primary;
+  /* reuse body-large fluid scale: 18px -> 20px */
+  font-size: clamp(1.125rem, 1.079rem + 0.227vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--Text-Neutral-Primary);
+  margin: 0 0 var(--px-gap-xl);
+}
+.px-body {
+  /* 16px -> 18px */
+  font-size: clamp(1rem, 0.955rem + 0.227vw, 1.125rem);
+  line-height: 1.5;
+}
 
 .px-row { display: grid; gap: var(--px-gap-lg); }
 .px-row--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -33,7 +75,7 @@
 
 .px-form { display: grid; gap: var(--px-form-gap); background: var(--Background-Neutral-Primary); border-radius: 20px; box-shadow: 0 4px 4px rgba(0,0,0,0.25); padding: var(--px-form-padding); }
 .px-input, .px-textarea { display: grid; gap: var(--px-input-gap); }
-.px-input__label { font-size: 16px; color: var(--Text-Neutral-Secondary); opacity: 0.85; }
+.px-input__label { font-size: 1rem; color: var(--Text-Neutral-Secondary); opacity: 0.85; }
 .px-input input, .px-textarea textarea { display: block; width: 100%; padding: var(--px-input-padding); border-radius: 8px; border: 1px solid var(--Border-Neutral-Secondary); outline: none; }
 .px-input input:focus, .px-textarea textarea:focus { border-color: var(--Border-Brand-Primary); box-shadow: 0 0 0 2px var(--Border-Brand-Inverse); }
 
@@ -49,30 +91,24 @@ footer.px-footer .container { gap: var(--Space-lg); }
 footer.px-footer .px-footer-desc { max-width: 840px; }
 
 @media (max-width: 1199px) { .px-row--2 { grid-template-columns: 1fr; } }
-@media (max-width: 767px) {
-  .px-hero__title { font-size: 36px; line-height: 48px; }
-  .px-h2 { font-size: 32px; line-height: 40px; }
-}
+/* Removed redundant media queries for hero & lead (handled by clamp). Narrow h2 safeguard retained globally elsewhere. */
 
 // Spacing utility for Portfolio CTA to grid gap
 .px-portfolio-cta { margin-bottom: var(--px-portfolio-cta-gap); } // 60px
 
 /* About section specific spacing aligned to Figma */
-#about.px-section { padding: var(--Space-full-about-padding) 0; }
 #about .px-h2 { margin-bottom: var(--px-section-header-gap-xl); }
 #about .px-row { gap: var(--Space-4xl); } /* 60px between cards */
 
 /* Services spacing: center header block, apply Gap/XL under H2, tokenized gaps for tabs */
-#services.px-section { padding: var(--px-services-padding-y) 0; }
 #services .px-h2 { margin-bottom: var(--px-section-header-gap-xl); }
 #services .pinx-tabs { margin-top: var(--px-services-tabs-gap); }
 #services .pinx-tab-content-wrapper { margin-top: var(--px-services-tabs-gap); }
 
 /* Portfolio spacing: header gap below H2 and CTA gap before grid using tokens */
-#portfolio.px-section { padding: var(--px-portfolio-padding-y) 0; }
-#contact.px-section { padding: var(--px-contact-padding-y) 0; }
+/* Removed per-section padding overrides (#about, #services, #portfolio, #contact) in favor of unified .px-section rule */
 /* Contact: Eyebrow to content uses Padding/Full (99px); H2 to body uses Gap/L (24px); columns gap is 60px */
-#contact .px-eyebrow { margin-bottom: var(--px-contact-padding-y); }
+#contact .px-eyebrow { margin-bottom: var(--Space-full-about-padding); } /* maintains large gap; could unify later */
 #contact .px-h2 { margin-bottom: var(--Space-xl); }
 #contact .row { --bs-gutter-x: var(--Space-4xl); }
 /* Contact map placeholder */
@@ -81,6 +117,12 @@ footer.px-footer .px-footer-desc { max-width: 840px; }
   background: var(--Background-Neutral-Secondary) url('../images/map-placeholder.svg') center/cover no-repeat;
   border-radius: 10px;
 }
+/* Lazy map variant: show clickable overlay until user interaction */
+#contact .px-map--lazy { position: relative; cursor: pointer; overflow: hidden; }
+#contact .px-map--lazy .px-map__overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--Space-md); background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55)); color: #fff; text-align: center; padding: var(--Space-lg); font-size: clamp(.875rem,.83rem + .227vw,1rem); }
+#contact .px-map--lazy .px-map__overlay button { background: var(--Background-Pink-Inverse); color: var(--Text-Neutral-Inverse-Primary); border: none; padding: .65rem 1.1rem; border-radius: 8px; font-weight: 600; display: inline-flex; align-items: center; gap: .5rem; box-shadow: 0 2px 4px rgba(0,0,0,.3); }
+#contact .px-map--lazy .px-map__overlay button:focus-visible { outline: 2px solid var(--Border-Brand-Primary); outline-offset: 2px; }
+#contact .px-map--lazy iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 /* Second row gap is 40px between columns on Figma; use tokenized medium gap for safety */
 #contact .row + .row { margin-top: var(--px-hero-pb); } /* reuse 50px as section sub-gap; adjustable */
 #portfolio .px-h2 { margin-bottom: var(--px-section-header-gap-xl); }

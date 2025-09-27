@@ -1,0 +1,36 @@
+/* Utility helpers for spacing & accessibility */
+
+/* Gap utility using design token --Space-lg */
+.u-gap-lg { gap: var(--Space-lg) !important; }
+
+/* External link safety helper */
+/* Usage: <a href="..." target="_blank" rel="noopener" class="u-external"> */
+.u-external { display: inline; }
+
+/* External link icon indicator (appears only when target _blank) */
+.u-external[target="_blank"]::after {
+  content: "";
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-left: 0.35em;
+  background: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="%23000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="%23000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>') center/contain no-repeat;
+  opacity: 0.85;
+}
+
+.u-external[target="_blank"]:hover::after { opacity: 1; }
+
+/* Visually hidden (for a11y) */
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

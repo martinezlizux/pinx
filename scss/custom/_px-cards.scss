@@ -10,15 +10,17 @@
 
 .px-card__title {
   font-weight: 700;
-  font-size: 28px;
-  line-height: 40px;
+  /* 24px -> 28px */
+  font-size: clamp(1.5rem, 1.409rem + 0.455vw, 1.75rem);
+  line-height: 1.35;
   margin: 0 0 var(--Space-sm); /* 12px */
 }
 
 .px-card__desc {
   font-weight: 600;
-  font-size: 20px;
-  line-height: 32px;
+  /* 16px -> 20px */
+  font-size: clamp(1rem, 0.909rem + 0.455vw, 1.25rem);
+  line-height: 1.55;
   color: var(--Text-Neutral-Secondary);
   margin: 0; /* gap to image is handled by card content layout */
 }

@@ -1,0 +1,58 @@
+/* Dark theme overrides using existing token structure */
+
+[data-theme="dark"] {
+  /* Backgrounds */
+  --Background-Neutral-Primary: #0f1012;
+  --Background-Neutral-Secondary: #1b1d21;
+  --Background-Neutral-Tertiary: #24272c;
+
+  /* Text */
+  --Text-Neutral-Primary: #f5f7fa;
+  --Text-Neutral-Secondary: #c2c8d2;
+  --Text-Neutral-Tertiary: #8b92a0;
+  --Text-Neutral-Inverse-Primary: #0f1012;
+
+  /* Brand adjustments (keep vibrancy, slightly tuned for dark contrast) */
+  --Brand-Pink-500: #ff3f86;
+  --Brand-Pink-600: #e03678;
+  --Brand-Purple-500: #6f5bff;
+  --Brand-Purple-600: #5c49e2;
+
+  /* Borders & outlines */
+  --Border-Neutral-Subtle: #2c3036;
+  --Border-Neutral-Strong: #3a4048;
+
+  /* Elevation / surfaces */
+  --Surface-Elevated: #17191d;
+  --Surface-Hover: #21242a;
+  --Surface-Active: #272b32;
+
+  /* Focus color fallback */
+  --Focus-Primary: var(--Brand-Pink-500);
+
+  /* Component specific (cards, forms) if needed */
+  .px-card { background: linear-gradient(145deg, #181a1e, #1f2328); box-shadow: 0 4px 18px -4px rgba(0,0,0,.6); }
+  .px-input input, .px-textarea textarea { background: #1b1d21; color: var(--Text-Neutral-Primary); border-color: var(--Border-Neutral-Subtle); }
+  .px-input input:focus, .px-textarea textarea:focus { border-color: var(--Brand-Pink-500); box-shadow: 0 0 0 1px var(--Brand-Pink-500); }
+  .pinx-header { box-shadow: 0 2px 10px -2px rgba(0,0,0,.55); }
+  .pinx-header__toggle-bar { background: var(--Text-Neutral-Primary); }
+  .pinx-theme-toggle { color: var(--Text-Neutral-Primary); }
+  .pinx-tab-btn { background: #1d2024; }
+  .pinx-tab-btn.pinx-tab-btn--selected { background: var(--Brand-Pink-500); color: #fff; }
+  .portfolio-logo-box { background: #1e2126; }
+  .bg-secondary { background-color: #1e2126 !important; }
+  footer.px-footer { background: #121315; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* Mirror same overrides when user hasn’t forced light */
+    --Background-Neutral-Primary: #0f1012;
+    --Background-Neutral-Secondary: #1b1d21;
+    --Background-Neutral-Tertiary: #24272c;
+    --Text-Neutral-Primary: #f5f7fa;
+    --Text-Neutral-Secondary: #c2c8d2;
+    --Text-Neutral-Tertiary: #8b92a0;
+    --Text-Neutral-Inverse-Primary: #0f1012;
+  }
+}

@@ -68,14 +68,23 @@
 	<header class="pinx-header">
 		<div class="container pinx-header__inner">
 			<div class="pinx-header__brand d-flex align-items-center">
-			<img src="assets/images/logo-Pinks-Signs.svg" alt="Pinx logo" height="40" loading="lazy" />
+			<img src="assets/images/logo-Pinks-Signs.svg" alt="Pinx logo" width="200px" loading="lazy" />
 			</div>
 
-			<nav class="pinx-header__nav" aria-label="Main">
+			<button class="pinx-header__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-nav">
+				<span class="pinx-header__toggle-bar" aria-hidden="true"></span>
+				<span class="pinx-header__toggle-bar" aria-hidden="true"></span>
+				<span class="pinx-header__toggle-bar" aria-hidden="true"></span>
+			</button>
+
+			<nav class="pinx-header__nav" id="primary-nav" aria-label="Main">
 				<a href="#about" class="btn btn-secondary btn-nav"><i class="fa-solid fa-face-smile-wink icon-sm" aria-hidden="true"></i>About Us</a>
 				<a href="#services" class="btn btn-secondary btn-nav"><i class="fa-solid fa-bell-concierge icon-sm" aria-hidden="true"></i>Services</a>
 				<a href="#portfolio" class="btn btn-secondary btn-nav"><i class="fa-solid fa-images icon-sm" aria-hidden="true"></i>Gallery</a>
 				<a href="#contact" class="btn btn-secondary btn-nav"><i class="fa-solid fa-headset icon-sm" aria-hidden="true"></i>Contact Us</a>
+				<button class="pinx-theme-toggle" type="button" aria-label="Cambiar tema" title="Toggle dark mode">
+					<i class="fa-solid fa-moon" aria-hidden="true"></i>
+				</button>
 			</nav>
 		</div>
 	</header>
@@ -95,7 +104,7 @@
 
 	<!-- About -->
 	<section id="about" class="px-section" aria-label="About us" data-name="Section - About Us" data-node-id="21:186801">
-		<div class="container col-10">
+		<div class="container col-12 col-md-10">
 			<p class="px-eyebrow" data-node-id="21:186784">ABOUT US</p>
 			<h2 class="px-h2" data-node-id="21:186787">Professional Printing &amp; Design with a Family Touch</h2>
 			<div class="px-row px-row--2">
@@ -115,11 +124,11 @@
 
 	<!-- Services -->
 	<section id="services" class="px-section" aria-label="Services">
-		<div class="container col-10">
+		<div class="container col-12 col-md-10">
 			<div>
 				<p class="px-eyebrow">SERVICES</p>
 				<div class="row text-center justify-content-center">
-					<div class="col-10">
+					<div class="col-12 col-md-10">
 						<h2 class="px-h2">The Perfect Solution for Every Visual Project</h2>
 						<p class="px-lead">Explore our complete range of services—from giant banners and vehicle wraps to custom websites and illuminated LED signs.</p>
 					</div>
@@ -137,25 +146,25 @@
 
 			<div class="pinx-tab-content-wrapper d-flex justify-content-center">
 				<div class="pinx-tab-content" data-content="large-format">
-					<article class="px-card" style="max-width:740px">
+					<article class="px-card">
 						<h3 class="px-card__title">Large Format Printing</h3>
 						<p class="px-card__desc">Eye-catching banners, decorative wallpapers, vehicle wraps, and acrylic graphics that stand out indoors or outdoors.</p>
 					</article>
 				</div>
 				<div class="pinx-tab-content d-none" data-content="commercial-printing">
-					<article class="px-card" style="max-width:740px">
+					<article class="px-card">
 						<h3 class="px-card__title">Commercial Printing</h3>
 						<p class="px-card__desc">Business cards, flyers, brochures, and marketing materials with premium finishes for a professional impression.</p>
 					</article>
 				</div>
 				<div class="pinx-tab-content d-none" data-content="led-signs">
-					<article class="px-card" style="max-width:740px">
+					<article class="px-card">
 						<h3 class="px-card__title">LED &amp; Illuminated Signs</h3>
 						<p class="px-card__desc">Bright, energy-efficient LED signs and illuminated displays that make your business visible day and night.</p>
 					</article>
 				</div>
 				<div class="pinx-tab-content d-none" data-content="web-design">
-					<article class="px-card" style="max-width:740px">
+					<article class="px-card">
 						<h3 class="px-card__title">Web Design</h3>
 						<p class="px-card__desc">Modern, responsive websites that showcase your brand online with professional design and user experience.</p>
 					</article>
@@ -166,11 +175,11 @@
 
 	<!-- Portfolio -->
 	<section id="portfolio" class="px-section" aria-label="Portfolio">
-		<div class="container col-10">
+		<div class="container col-12 col-md-10">
 			<div>
 				<p class="px-eyebrow">PORTFOLIO</p>
 				<div class="row text-center justify-content-center">
-					<div class="col-10">
+					<div class="col-12 col-md-10">
 						<h2 class="px-h2">Experience You Can Trust</h2>
 						<p class="px-lead">Browse projects we’ve created for local and national businesses. Each piece reflects our commitment to quality, innovation, and design.</p>
 						<div class="text-center px-portfolio-cta">
@@ -194,24 +203,12 @@
 
 	<!-- Contact -->
 	<section id="contact" class="px-section" aria-label="Contact">
-		<div class="container col-10">
+		<div class="container col-12 col-md-10">
 			<p class="px-eyebrow">CONTACT US</p>
+			
 			<div class="row">
 				<div class="col-lg-6">
-					<div class="px-map" aria-hidden="true"></div>
-				</div>
-				<div class="col-lg-6">
-					<h2 class="px-h2">Ready to Start Your Next Project?</h2>
-					<p class="px-body">
-						Call us at 702 356 7545<br />
-						Location: [full address]<br />
-						Business Hours: [days &amp; times]
-					</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-6">
-					<h2 class="px-h2">Contact Us</h2>
+					<h2 class="px-h2">Do you have any question? Get a Free Quote</h2>
 					<p class="px-body">Fill out the form for a free quote.</p>
 				</div>
 				<div class="col-lg-6">
@@ -236,16 +233,27 @@
 					</form>
 				</div>
 			</div>
+			<div class="row mb-5">
+				<div class="col-12">
+					<!-- Lazy map placeholder: loads iframe only on user interaction -->
+					<div class="px-map px-map--lazy" data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.271283366674!2d-122.08560842404479!3d37.42213197209082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb24c2f5c0c3f%3A0xacf0f0f0fef2d3e1!2s1600%20Amphitheatre%20Pkwy%2C%20Mountain%20View%2C%20CA%2094043!5e0!3m2!1sen!2sus!4v1695839999999" aria-label="Business location map (activate to load)" role="group">
+						<div class="px-map__overlay">
+							<p class="m-0">Click to load the interactive map<br><small>(Improves performance)</small></p>
+							<button type="button" class="px-map__load" aria-label="Load interactive map"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Load Map</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 
 	<!-- Testimonials -->
 	<section id="testimonials" class="px-section" aria-label="Testimonials">
-		<div class="container col-10">
+		<div class="container col-12 col-md-10">
 			<div>
 				<p class="px-eyebrow">TESTIMONIALS</p>
 				<div class="row text-center justify-content-center">
-					<div class="col-10">
+					<div class="col-12 col-md-10">
 						<h2 class="px-h2">What Our Clients Say</h2>
 						<p class="px-lead">Nothing speaks louder than our customers’ voices. Read their stories and see how Pinx helped their brands stand out.</p>
 					</div>
@@ -260,12 +268,31 @@
 	</section>
 
 	<!-- Footer -->
-	<footer class="px-section px-footer">
-		<div class="container col-10">
-			<div class="row justify-content-start">
-				<h4 class="px-h4">Pinks Signs</h4>
-				<p class="px-body px-footer-desc">
-					Explora nuestro catálogo de servicios de impresión y diseño. Ya sea que necesites un banner gigante, una página web moderna o un letrero LED que brille de noche.
+	<footer class="px-section px-footer" aria-label="Footer" aria-describedby="legal-note" itemscope itemtype="https://schema.org/Organization">
+		<meta itemprop="name" content="Pinx Creative Agency" />
+		<div class="container col-12 col-md-10" itemprop="department" itemscope itemtype="https://schema.org/Organization">
+			<div class="d-flex flex-column u-gap-lg">
+			<h2 class="px-h2 mb-0">Ready to Start Your Next Project?</h2>
+			<p class="px-body m-0">
+				Call us at <a href="tel:+17023567545" class="px-text-pink" itemprop="telephone">(702) 356-7545</a><br />
+				Email: <a href="mailto:info@pinx.agency" class="px-text-pink" itemprop="email">info@pinx.agency</a><br />
+				Location: <a class="px-text-pink u-external" href="https://maps.google.com/?q=Pinx+Creative+Agency" target="_blank" rel="noopener" itemprop="sameAs">Google Maps</a><br />
+				<span itemscope itemtype="https://schema.org/PostalAddress" class="d-inline-block" itemprop="address">
+					<span itemprop="streetAddress">1600 Amphitheatre Parkway</span>,
+					<span itemprop="addressLocality">Mountain View</span>,
+					<span itemprop="addressRegion">CA</span>
+					<span itemprop="postalCode">94043</span>
+					<span itemprop="addressCountry">US</span>
+					<span itemprop="geo" itemscope itemtype="https://schema.org/GeoCoordinates">
+						<meta itemprop="latitude" content="37.422131" />
+						<meta itemprop="longitude" content="-122.085608" />
+					</span>
+				</span><br />
+				Business Hours: <span itemprop="openingHours">[days &amp; times]</span>
+			</p>
+			<a class="btn btn-primary btn-cta align-self-start" href="#contact"><i class="fa-regular fa-circle icon-sm" aria-hidden="true"></i>Get a Free Quote</a>
+				<p id="legal-note" class="px-body m-0" style="opacity:.7; font-size: clamp(0.75rem, 0.705rem + 0.227vw, .875rem);">
+					© <span id="year"></span> Pinx Creative Agency. All rights reserved. This site may use cookies for basic functionality. <span class="u-visually-hidden">Legal notice referenced by footer aria-describedby.</span>
 				</p>
 			</div>
 		</div>

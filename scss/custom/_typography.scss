@@ -18,7 +18,8 @@
 .pinx-hero-title {
   font-family: $font-primary;
   font-weight: $font-weight-black;
-  font-size: 52px;
+  /* Fluid 36px @320px -> 52px @1200px */
+  font-size: clamp(2.25rem, 1.886rem + 1.818vw, 3.25rem);
   line-height: 1.1;
   background: linear-gradient(90deg, #534ae5, #ed437f, #ff006c);
   background-clip: text;
@@ -30,7 +31,8 @@
 .pinx-hero-subtitle {
   font-family: $font-secondary;
   font-weight: $font-weight-regular;
-  font-size: 22px;
+  /* Fluid 18px -> 22px */
+  font-size: clamp(1.125rem, 1.034rem + 0.455vw, 1.375rem);
   line-height: 1.5;
   color: #1c1a1c;
   max-width: 600px;
@@ -55,32 +57,34 @@
 .pinx-h1 ,h1 {
   font-family: $font-primary;
   font-weight: $font-weight-black;
-  font-size: $font-size-5xl;
-  line-height: $line-height-heading-h1;
+  /* Fluid from 32px @320px to 56px @1200px */
+  font-size: clamp(2rem, 1.1429rem + 2.6786vw, 3.5rem);
+  line-height: 1.1;
 }
 
 .pinx-h2, h2 {
   font-family: $font-primary;
   font-weight: $font-weight-bold;
-  font-size: $font-size-4xl;
-  line-height: $line-height-heading-h2;
+  /* 24px -> 40px */
+  font-size: clamp(1.5rem, 0.9643rem + 1.6964vw, 2.5rem);
+  line-height: 1.18;
 }
 
 .pinx-h3 ,h3 {
   font-family: $font-primary;
   font-weight: $font-weight-bold;
-  font-size: $font-size-2xl;
-  line-height: $line-height-heading-h3;
+  /* 20px -> 28px */
+  font-size: clamp(1.25rem, 1.0179rem + 0.7321vw, 1.75rem);
+  line-height: 1.25;
 }
-
 
 .pinx-h4 , h4 {
   font-family: $font-primary;
   font-weight: $font-weight-medium;
-  font-size: $font-size-lg;
-  line-height: $line-height-snug;
+  /* 18px -> 22px */
+  font-size: clamp(1.125rem, 1.0179rem + 0.3571vw, 1.375rem);
+  line-height: 1.3;
   color: inherit;
-  
 }
 
 
@@ -89,30 +93,34 @@
 .pinx-body-large {
   font-family: $font-primary;
   font-weight: $font-weight-medium;
-  font-size: $font-size-lg;
-  line-height: $line-height-body;
+  /* Fluid 18px -> 20px */
+  font-size: clamp(1.125rem, 1.079rem + 0.227vw, 1.25rem);
+  line-height: $line-height-normal;
 }
 
 .pinx-body-regular {
   font-family: $font-primary;
   font-weight: $font-weight-regular;
-  font-size: $font-size-lg;
+  /* Corrected to base size. Fluid 16px -> 18px */
+  font-size: clamp(1rem, 0.955rem + 0.227vw, 1.125rem);
   line-height: $line-height-normal;
 }
 
 .pinx-body-semibold {
   font-family: $font-primary;
   font-weight: $font-weight-semibold;
-  font-size: $font-size-lg;
-  line-height: 32px;
+  /* Fluid 16px -> 20px */
+  font-size: clamp(1rem, 0.909rem + 0.455vw, 1.25rem);
+  line-height: 1.55;
 }
 
 /* Special text styles */
 .pinx-headline {
   font-family: $font-primary;
   font-weight: $font-weight-semibold;
-  font-size: $font-size-xl;
-  line-height: 60px;
+  /* Fluid 20px -> 24px */
+  font-size: clamp(1.25rem, 1.159rem + 0.455vw, 1.5rem);
+  line-height: 1.3;
   letter-spacing: 2.4px;
   text-transform: uppercase;
   color: var(--Text-Neutral-Tertiary);
@@ -121,34 +129,14 @@
 .pinx-form-label {
   font-family: $font-secondary;
   font-weight: $font-weight-regular;
-  font-size: $font-size-base;
+  /* Fluid 14px -> 16px */
+  font-size: clamp(0.875rem, 0.830rem + 0.227vw, 1rem);
   line-height: $line-height-normal;
   opacity: 0.65;
   color: var(--Text-Neutral-Secondary);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .pinx-h1 { font-size: 36px; line-height: 48px; }
-  .pinx-h2 { font-size: 32px; line-height: 40px; }
-  .pinx-h3 { font-size: 24px; line-height: 32px; }
-  .pinx-h4 { font-size: 28px; }
-  .pinx-body-large { font-size: 18px; line-height: 28px; }
-  .pinx-body-regular { font-size: 18px; }
-  .pinx-body-semibold { font-size: 18px; line-height: 28px; }
-  .pinx-headline { font-size: 20px; line-height: 48px; }
-}
-
-@media (max-width: 576px) {
-  .pinx-h1 { font-size: 28px; line-height: 36px; }
-  .pinx-h2 { font-size: 24px; line-height: 32px; }
-  .pinx-h3 { font-size: 20px; line-height: 28px; }
-  .pinx-h4 { font-size: 24px; }
-  .pinx-body-large { font-size: 16px; line-height: 24px; }
-  .pinx-body-regular { font-size: 16px; }
-  .pinx-body-semibold { font-size: 16px; line-height: 24px; }
-  .pinx-headline { font-size: 18px; line-height: 36px; }
-}
+/* Removed discrete breakpoints in favor of fluid clamp() scaling above */
 
 /* Additional Typography Classes */
 
@@ -164,8 +152,14 @@
 .pinx-logo {
   font-family: "Open Sans", sans-serif;
   font-weight: $font-weight-extrabold;
-  font-size: $font-size-3xl;
+  /* Fluid 24px -> 32px */
+  font-size: clamp(1.5rem, 1.318rem + 0.909vw, 2rem);
   line-height: $line-height-tight;
+}
+
+/* Ultra-narrow safeguard for hero title (prevents overshrink below ~320px) */
+@media (max-width: 359.98px) {
+  .pinx-hero-title { font-size: 2rem; }
 }
 
 /* Text color utilities (Pinx-specific) */

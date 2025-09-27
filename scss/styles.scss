@@ -49,6 +49,7 @@
 
 // 4) Now load the rest of our custom partials that override components
 @use "custom/typography" as *;
+@use "custom/utilities" as *;
 @use "custom/buttons" as *;
 @use "custom/forms" as *;
 
@@ -56,6 +57,9 @@
 @use "custom/secciones" as *;
 @use "custom/figma-landing" as *;
 @use "custom/px-cards" as *;
+@use "custom/theme-dark" as *; // Import dark theme partial
+@use "custom/motion" as *; // Motion & transitions
+@use "custom/responsive" as *; // responsive refinements (must be last)
 
 // =========================================
 // GLOBAL STYLES

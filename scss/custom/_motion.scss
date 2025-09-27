@@ -1,0 +1,32 @@
+/* Motion & Transition Tokens */
+
+:root {
+  --transition-duration-fast: 120ms;
+  --transition-duration-medium: 240ms;
+  --transition-duration-slow: 420ms;
+  --transition-ease-standard: cubic-bezier(.4, 0, .2, 1);
+  --transition-ease-emphasis: cubic-bezier(.65, .05, .36, 1);
+}
+
+/* Base transitions for theme changes (opt-in) */
+@media (prefers-reduced-motion: no-preference) {
+  html, body, .pinx-header, .px-card, .pinx-tab-btn, .pinx-theme-toggle {
+    transition: background-color var(--transition-duration-medium) var(--transition-ease-standard),
+                color var(--transition-duration-medium) var(--transition-ease-standard),
+                border-color var(--transition-duration-medium) var(--transition-ease-standard),
+                box-shadow var(--transition-duration-medium) var(--transition-ease-standard);
+  }
+}
+
+/* Reduced motion: minimize non-essential animations */
+@media (prefers-reduced-motion: reduce) {
+  .pinx-header__toggle-bar { transition: none !important; }
+  .pinx-header__nav { transition: none !important; }
+  .pinx-tab-btn { transition: none !important; }
+  .pinx-theme-toggle { transition: none !important; }
+}
+
+/* Hamburger animation refinements */
+@media (prefers-reduced-motion: no-preference) {
+  .pinx-header__toggle-bar { transition: transform var(--transition-duration-medium) var(--transition-ease-emphasis), opacity var(--transition-duration-fast) linear; }
+}

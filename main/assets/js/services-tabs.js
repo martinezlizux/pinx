@@ -18,119 +18,94 @@ document.addEventListener('DOMContentLoaded', function () {
                 btn.setAttribute('aria-selected', 'true');
                 const tab = btn.getAttribute('data-tab');
                 tabGroup.parentElement.parentElement.querySelector(`.pinx-tab-content[data-content="${tab}"]`).classList.remove('d-none');
+
+        // Mobile: indicator + autoscroll
+        updateIndicator(tabGroup);
+        if (window.innerWidth < 768) {
+          scrollTabIntoView(btn, tabGroup);
+        }
             });
         });
+
+    // Initial indicator
+    updateIndicator(tabGroup);
     });
 });
 
 // Dynamic width sync for Services tabs and content wrapper
 document.addEventListener('DOMContentLoaded', () => {
-    const servicesSection = document.querySelector('#services');
-    if (!servicesSection) return;
-    const tabs = servicesSection.querySelector('.pinx-tabs');
-    const wrapper = servicesSection.querySelector('.pinx-tab-content-wrapper');
-    if (!tabs || !wrapper) return;
+  const servicesSection = document.querySelector('#services');
+  if (!servicesSection) return;
+  const tabs = servicesSection.querySelector('.pinx-tabs');
+  const wrapper = servicesSection.querySelector('.pinx-tab-content-wrapper');
+  if (!tabs || !wrapper) return;
 
-    let rafId;
-    const applyWidth = () => {
-        rafId && cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(() => {
-            // Get exact rendered width INCLUDING horizontal padding of .pinx-tabs
-            const w = tabs.offsetWidth;
-            // Apply width to wrapper unless screen is very narrow; then allow 100%
-            if (w < window.innerWidth - 32) {
-                wrapper.style.width = w + 'px';
-            } else {
-                wrapper.style.width = '100%';
-            }
-        });
-    };
-
-    // Recalculate on font load, images, and resize
-    applyWidth();
-    window.addEventListener('resize', applyWidth, { passive: true });
-    // If tabs content changes (e.g., responsive wrapping), observe size
-    const ro = new ResizeObserver(applyWidth);
-    ro.observe(tabs);
-});
-// Services Tabs Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const tabButtons = document.querySelectorAll('.service-tab-btn');
-    const contentDivs = document.querySelectorAll('.service-content');
-    
-    // Function to show specific content and hide others with smooth transition
-    function showContent(targetTab) {
-        // Add fade out effect to all visible content
-        contentDivs.forEach(content => {
-            if (!content.classList.contains('hidden')) {
-                content.style.opacity = '0';
-                content.style.transform = 'translateY(20px)';
-            }
-        });
-        
-        // After fade out, hide all and show target
-        setTimeout(() => {
-            // Hide all content
-            contentDivs.forEach(content => {
-                content.style.display = 'none';
-                content.classList.add('hidden');
-            });
-            
-            // Show target content
-            const targetContent = document.querySelector(`[data-content="${targetTab}"]`);
-            if (targetContent) {
-                targetContent.style.display = 'block';
-                targetContent.classList.remove('hidden');
-                
-                // Reset styles for animation
-                targetContent.style.opacity = '0';
-                targetContent.style.transform = 'translateY(20px)';
-                
-                // Trigger fade in animation
-                setTimeout(() => {
-                    targetContent.style.opacity = '1';
-                    targetContent.style.transform = 'translateY(0)';
-                }, 50);
-            }
-        }, 150);
-    }
-    
-    // Function to update active tab button
-    function updateActiveTab(activeButton) {
-        // Remove active class from all buttons
-        tabButtons.forEach(btn => {
-            btn.classList.remove('active');
-            btn.style.backgroundColor = 'white';
-            btn.style.borderColor = '#ffedf5';
-            btn.style.color = '#ff006c';
-        });
-        
-        // Add active class to clicked button
-        activeButton.classList.add('active');
-        activeButton.style.backgroundColor = '#ffedf5';
-        activeButton.style.borderColor = '#ffedf5';
-        activeButton.style.color = '#ff006c';
-    }
-    
-    // Add click event listeners to all tab buttons
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Prevent multiple rapid clicks
-            if (this.classList.contains('active')) return;
-            
-            const targetTab = this.getAttribute('data-tab');
-            
-            // Update active tab
-            updateActiveTab(this);
-            
-            // Show corresponding content
-            showContent(targetTab);
-        });
+  let rafId;
+  const applyWidth = () => {
+    rafId && cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      // On mobile we let the wrapper be fluid (scrolling tabs pattern)
+      if (window.innerWidth < 768) {
+        wrapper.style.width = '100%';
+        return;
+      }
+      const rect = tabs.getBoundingClientRect();
+      const w = Math.round(rect.width); // fractional px -> rounded
+      const max = window.innerWidth - 32; // 16px gutter each side safety
+      wrapper.style.width = (w < max ? w : max) + 'px';
     });
-    
-    // Initialize with first tab active
-    if (tabButtons.length > 0) {
-        updateActiveTab(tabButtons[0]);
-        showContent('large-format');
-    }
+  };
+
+  // Initial pass
+  applyWidth();
+
+  // Re-run after fonts load (can shift text width)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(applyWidth).catch(() => {});
+  }
+
+  window.addEventListener('resize', applyWidth, { passive: true });
+  const ro = new ResizeObserver(applyWidth);
+  ro.observe(tabs);
 });
+
+// Helper: update indicator position/width (mobile)
+function updateIndicator(tabGroup){
+  if (!tabGroup) return;
+  if (window.innerWidth >= 768) {
+    tabGroup.style.removeProperty('--indicator-width');
+    tabGroup.style.removeProperty('--indicator-x');
+    return;
+  }
+  const active = tabGroup.querySelector('.pinx-tab-btn--selected');
+  if (!active) return;
+  const rect = active.getBoundingClientRect();
+  const parentRect = tabGroup.getBoundingClientRect();
+  const width = Math.round(rect.width);
+  const x = Math.round(rect.left - parentRect.left + tabGroup.scrollLeft);
+  tabGroup.style.setProperty('--indicator-width', width + 'px');
+  tabGroup.style.setProperty('--indicator-x', x + 'px');
+}
+
+// Helper: ensure active tab is visible (mobile)
+function scrollTabIntoView(btn, tabGroup){
+  const btnRect = btn.getBoundingClientRect();
+  const groupRect = tabGroup.getBoundingClientRect();
+  const offset = btnRect.left - groupRect.left; // visible left inside container
+  const overflowRight = offset + btnRect.width - tabGroup.clientWidth;
+  if (offset < 0) {
+    tabGroup.scrollBy({left: offset - 16, behavior: 'smooth'});
+  } else if (overflowRight > 0) {
+    tabGroup.scrollBy({left: overflowRight + 16, behavior: 'smooth'});
+  }
+}
+
+// Recalculate indicator on resize & scroll
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.pinx-tabs').forEach(updateIndicator);
+});
+document.addEventListener('scroll', () => {
+  if (window.innerWidth < 768) {
+    document.querySelectorAll('.pinx-tabs').forEach(updateIndicator);
+  }
+}, true);

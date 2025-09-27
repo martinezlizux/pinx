@@ -1,0 +1,66 @@
+// Centralized responsive refinements for mobile & tablet
+// Keeps existing token-driven spacing; only scales down where needed.
+
+// Breakpoints reference (Bootstrap):
+// xs <576, sm >=576, md >=768, lg >=992, xl >=1200
+
+// 1. Section vertical padding scaling (token-based sections already use vars)
+@media (max-width: 991.98px) { // below lg
+  .px-section { padding: calc(var(--px-section-padding-y) * 0.8) 0; }
+}
+@media (max-width: 767.98px) { // below md
+  .px-section { padding: calc(var(--px-section-padding-y) * 0.65) 0; }
+  #hero.px-section { padding: calc(var(--px-hero-padding-y) * 0.6) 0; }
+}
+@media (max-width: 575.98px) { // below sm
+  /* Mobile unified vertical padding: 32px (Space-3XL) + 8px horizontal gutter */
+  .px-section { padding: var(--Space-3xl) 8px !important; }
+  #hero.px-section { padding: calc(var(--px-hero-padding-y) * 0.5) 8px; }
+}
+
+// 2. Hero refinements (beyond typography already adjusted elsewhere)
+@media (max-width: 767.98px) {
+  .px-hero__title { margin-bottom: var(--Space-lg); }
+  .px-lead { font-size: 18px; line-height: 30px; }
+  .hero-buttons { gap: var(--Space-md); }
+}
+@media (max-width: 575.98px) {
+  .px-hero__title { font-size: 30px; line-height: 40px; }
+  .px-lead { font-size: 16px; line-height: 26px; }
+}
+
+// 3. Header navigation horizontal scroll (simple approach before hamburger)
+@media (max-width: 767.98px) {
+  .pinx-header__nav { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .pinx-header__nav::-webkit-scrollbar { display: none; }
+  .pinx-header__nav a { flex: 0 0 auto; white-space: nowrap; }
+}
+
+// 4. Card & form inner padding reduction
+@media (max-width: 575.98px) {
+  .px-card, .pinx-tab-content, .px-form { padding: 1.25rem !important; }
+  .px-input input, .px-textarea textarea { padding: 10px 12px; }
+}
+
+// 5. Portfolio & testimonials grid tightening
+@media (max-width: 767.98px) {
+  .portfolio-logo-box { width: 100%; max-width: 260px; margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 575.98px) {
+  .portfolio-logo-box { max-width: 200px; height: 140px; }
+}
+
+// 6. Footer spacing
+@media (max-width: 767.98px) {
+  footer.px-footer { padding: calc(var(--px-footer-padding-y) * 0.7) 0; }
+}
+@media (max-width: 575.98px) {
+  footer.px-footer { padding: calc(var(--px-footer-padding-y) * 0.55) 0; }
+}
+
+// 7. Utility: stack gap reducers (optional usage)
+.px-stack-sm > * + * { margin-top: var(--Space-sm); }
+@media (max-width: 575.98px) { .px-stack-sm > * + * { margin-top: var(--Space-xs); } }
+
+// 8. Ensure services tabs mobile (already handled) not overridden here.
+// (No overrides to .pinx-tabs inside this file intentionally.)

@@ -37,7 +37,7 @@
 .px-btn--nav { @extend .btn-nav; }
 
 /* Tamaños */
-.btn-xs { padding: 6px 8px; font-size: 12px; min-height: 26px; min-width: 72px; }
+.btn-xs { padding: 6px 8px; font-size: 0.75rem; min-height: 26px; min-width: 72px; }
 .btn-sm { padding: 8px 16px; font-size: vars.$font-size-sm; min-height: 35px; min-width: 108px; }
 .btn-md { padding: 10px 18px; font-size: vars.$font-size-base; min-height: 42px; min-width: 121px; }
 .btn-lg { padding: 12px 20px; font-size: vars.$font-size-lg; min-height: 50px; min-width: 140px; }
@@ -138,7 +138,7 @@
 }
 
 /* icon size helpers used in HTML */
-.icon-sm { font-size: 14px; }
-.icon-md { font-size: 16px; }
-.icon-lg { font-size: 24px; }
+.icon-sm { font-size: 0.875rem; }
+.icon-md { font-size: 1rem; }
+.icon-lg { font-size: 1.5rem; }
 
